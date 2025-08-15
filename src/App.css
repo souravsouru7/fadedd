@@ -1,0 +1,6 @@
+/* Clean App Styles */
+.App {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0F0F23 0%, #1A1A2E 50%, #16213E 100%);
+}
