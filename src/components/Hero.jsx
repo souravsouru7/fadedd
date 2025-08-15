@@ -63,19 +63,21 @@ const Hero = () => {
         minHeight: '100vh',
         position: 'relative',
         overflow: 'hidden',
-        display: isMobile ? 'block' : 'flex'
+        display: 'flex',
+        fontFamily: 'Arial, Helvetica, sans-serif'
       }}
     >
-      {/* Left Side - Vibrant Orange */}
+      {/* Left Section - Dark Grey/Black Background */}
       <div style={{
-        flex: isMobile ? 'none' : '1',
-        background: 'linear-gradient(135deg, #ff6b35, #f7931e)',
+        flex: '1',
+        background: '#1a1a1a',
         position: 'relative',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        padding: isMobile ? '20px' : '40px',
-        height: isMobile ? '50vh' : 'auto',
+        padding: '40px',
+        height: '100vh',
+        clipPath: isMobile ? 'none' : 'none',
         transition: 'all 0.4s ease'
       }}>
         
@@ -83,203 +85,34 @@ const Hero = () => {
         <div style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '10px',
-          position: 'relative',
-          zIndex: 10,
-          justifyContent: isMobile ? 'center' : 'flex-start'
-        }}>
-          <div style={{
-            width: isMobile ? '25px' : '30px',
-            height: isMobile ? '25px' : '30px',
-            background: '#000',
-            borderRadius: '50%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: '#fff',
-            fontSize: isMobile ? '14px' : '18px',
-            fontWeight: 'bold',
-            cursor: 'pointer',
-            transition: 'all 0.3s ease'
-          }}>F</div>
-          <span style={{
-            color: '#000',
-            fontSize: isMobile ? '14px' : '16px',
-            fontWeight: '600',
-            transition: 'all 0.3s ease'
-          }}>fadedelegance.</span>
-        </div>
-
-        {/* Left Side Content */}
-        <div style={{
-          textAlign: 'center',
-          color: '#000',
-          position: 'relative',
-          zIndex: 10,
-          margin: isMobile ? '20px 0' : '0'
-        }}>
-          <h2 style={{
-            fontSize: isMobile ? 'clamp(1.5rem, 8vw, 2.5rem)' : 'clamp(2rem, 5vw, 3rem)',
-            fontWeight: '800',
-            margin: '0 0 20px 0',
-            textTransform: 'uppercase',
-            letterSpacing: '2px',
-            textShadow: '0 0 20px rgba(0,0,0,0.1)',
-            fontFamily: 'Cinzel, serif',
-            transition: 'all 0.3s ease',
-            position: 'relative'
-          }}>
-            {splitText('Luxury')}
-            {/* Underline effect */}
-            <div style={{
-              position: 'absolute',
-              bottom: '-5px',
-              left: '50%',
-              width: isVisible ? '100%' : '0%',
-              height: '3px',
-              background: 'linear-gradient(90deg, transparent, #000, transparent)',
-              transform: 'translateX(-50%)',
-              transition: 'width 0.8s ease 0.5s',
-              borderRadius: '2px'
-            }}></div>
-          </h2>
-          <p style={{
-            fontSize: isMobile ? '16px' : '18px',
-            fontWeight: '500',
-            maxWidth: isMobile ? '280px' : '300px',
-            margin: '0 auto',
-            lineHeight: '1.5',
-            fontFamily: 'Playfair Display, serif',
-            transition: 'all 0.3s ease',
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-            transitionDelay: '0.8s'
-          }}>
-            Premium restoration services for your most cherished items
-          </p>
-        </div>
-
-        {/* Bottom Left */}
-        <div style={{
-          textAlign: 'center',
+          justifyContent: 'space-between',
           position: 'relative',
           zIndex: 10
         }}>
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: isMobile ? '10px' : '15px',
-            marginBottom: '20px'
-          }}>
-            <div style={{
-              width: '2px',
-              height: isMobile ? '20px' : '30px',
-              background: '#000'
-            }}></div>
-            <div style={{
-              width: isMobile ? '40px' : '50px',
-              height: isMobile ? '40px' : '50px',
-              background: '#000',
-              borderRadius: '50%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: '#fff',
-              fontSize: isMobile ? '16px' : '20px',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease'
-            }}>▶</div>
-            <div style={{
-              width: '2px',
-              height: isMobile ? '20px' : '30px',
-              background: '#000'
-            }}></div>
-          </div>
           <span style={{
-            fontSize: isMobile ? '12px' : '14px',
-            fontWeight: '500',
-            color: '#000',
-            transition: 'all 0.3s ease'
-          }}>start restoration</span>
-        </div>
-      </div>
-
-      {/* Right Side - Dark Grey */}
-      <div style={{
-        flex: isMobile ? 'none' : '1',
-        background: 'linear-gradient(135deg, #2c3e50, #34495e)',
-        position: 'relative',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        padding: isMobile ? '20px' : '40px',
-        height: isMobile ? '50vh' : 'auto',
-        transition: 'all 0.4s ease'
-      }}>
-        
-        {/* Top Right Navigation */}
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: isMobile ? '15px' : '30px',
-          justifyContent: isMobile ? 'center' : 'flex-end',
-          position: 'relative',
-          zIndex: 10
-        }}>
+            color: '#ffffff',
+            fontSize: '28px',
+            fontWeight: '700',
+            letterSpacing: '3px',
+            fontFamily: 'Arial, sans-serif',
+            textTransform: 'uppercase'
+          }}>GLAMOUR</span>
+          
+          {/* Hamburger Menu */}
           <div style={{
-            width: isMobile ? '20px' : '30px',
-            height: '2px',
-            background: '#fff'
-          }}></div>
-          <nav style={{
             display: 'flex',
-            gap: isMobile ? '15px' : '25px'
-          }}>
-            {['discover', 'works', 'statements'].map((item) => (
-              <a 
-                key={item}
-                href="#" 
-                style={{
-                  color: '#fff',
-                  textDecoration: 'none',
-                  fontSize: isMobile ? '12px' : '14px',
-                  fontWeight: '500',
-                  textTransform: 'uppercase',
-                  letterSpacing: '1px',
-                  transition: 'all 0.3s ease',
-                  cursor: 'pointer'
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.color = '#ff6b35';
-                  e.target.style.transform = 'translateY(-2px)';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.color = '#fff';
-                  e.target.style.transform = 'translateY(0)';
-                }}
-              >
-                {item}
-              </a>
-            ))}
-          </nav>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '3px',
-            width: isMobile ? '16px' : '20px',
-            height: isMobile ? '16px' : '20px',
+            flexDirection: 'column',
+            gap: '4px',
             cursor: 'pointer',
-            transition: 'all 0.3s ease'
+            padding: '8px'
           }}>
-            {[...Array(9)].map((_, i) => (
+            {[...Array(3)].map((_, i) => (
               <div 
-                key={i} 
+                key={i}
                 style={{
-                  width: isMobile ? '3px' : '4px',
-                  height: isMobile ? '3px' : '4px',
-                  background: '#fff',
-                  borderRadius: '1px',
+                  width: '24px',
+                  height: '3px',
+                  background: '#ffffff',
                   transition: 'all 0.3s ease'
                 }}
               ></div>
@@ -287,247 +120,342 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Right Side Content */}
+        {/* Left Arrow Navigation */}
         <div style={{
-          textAlign: 'center',
-          color: '#fff',
-          position: 'relative',
-          zIndex: 10,
-          margin: isMobile ? '20px 0' : '0'
+          position: 'absolute',
+          left: '40px',
+          top: '50%',
+          transform: 'translateY(-50%)',
+          zIndex: 10
         }}>
-          <h2 style={{
-            fontSize: isMobile ? 'clamp(1.5rem, 8vw, 2.5rem)' : 'clamp(2rem, 5vw, 3rem)',
-            fontWeight: '800',
-            margin: '0 0 20px 0',
-            textTransform: 'uppercase',
-            letterSpacing: '2px',
-            textShadow: '0 0 20px rgba(255,255,255,0.1)',
-            fontFamily: 'Cinzel, serif',
+          <div style={{
+            width: '50px',
+            height: '50px',
+            border: '2px solid #ffffff',
+            borderRadius: '50%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
             transition: 'all 0.3s ease',
-            position: 'relative'
+            background: 'rgba(255,255,255,0.1)'
           }}>
-            {splitText('Restoration')}
-            {/* Gradient underline effect */}
             <div style={{
-              position: 'absolute',
-              bottom: '-5px',
-              left: '50%',
-              width: isVisible ? '100%' : '0%',
-              height: '3px',
-              background: 'linear-gradient(90deg, #ff6b35, #fff, #ff6b35)',
-              transform: 'translateX(-50%)',
-              transition: 'width 0.8s ease 0.7s',
-              borderRadius: '2px'
+              width: 0,
+              height: 0,
+              borderRight: '10px solid #ffffff',
+              borderTop: '8px solid transparent',
+              borderBottom: '8px solid transparent',
+              marginLeft: '-3px'
             }}></div>
-          </h2>
-          <p style={{
-            fontSize: isMobile ? '16px' : '18px',
-            fontWeight: '500',
-            maxWidth: isMobile ? '280px' : '300px',
-            margin: '0 auto',
-            lineHeight: '1.5',
-            fontFamily: 'Playfair Display, serif',
-            transition: 'all 0.3s ease',
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-            transitionDelay: '1s'
-          }}>
-            Expert craftsmanship that brings new life to luxury pieces
-          </p>
+          </div>
         </div>
 
-        {/* Bottom Right */}
+        {/* Left Side Content */}
         <div style={{
-          textAlign: 'center',
+          color: '#ffffff',
+          position: 'relative',
+          zIndex: 10,
+          marginLeft: '120px',
+          marginTop: 'auto',
+          marginBottom: '120px'
+        }}>
+          <h1 style={{
+            fontSize: 'clamp(4rem, 10vw, 6rem)',
+            fontWeight: '300',
+            margin: '0 0 15px 0',
+            fontFamily: 'Arial, sans-serif',
+            letterSpacing: '2px',
+            lineHeight: '0.9',
+            textTransform: 'uppercase'
+          }}>
+            {splitText('ROSIE')}
+          </h1>
+          <h2 style={{
+            fontSize: 'clamp(1.8rem, 5vw, 2.8rem)',
+            fontWeight: '300',
+            margin: '0 0 30px 0',
+            fontFamily: 'Arial, sans-serif',
+            letterSpacing: '1px',
+            opacity: 0.9,
+            textTransform: 'uppercase'
+          }}>
+            {splitText('HUNTINGTON-WHITELEY')}
+          </h2>
+          <div style={{
+            fontSize: 'clamp(3rem, 8vw, 4.5rem)',
+            fontWeight: '700',
+            fontFamily: 'Arial, sans-serif',
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+            transition: 'all 0.8s ease 1s',
+            color: '#ffffff'
+          }}>
+            080
+          </div>
+        </div>
+
+        {/* Partial Image Overlay on Left */}
+        <div style={{
+          position: 'absolute',
+          top: '15%',
+          right: '-15%',
+          width: '70%',
+          height: '70%',
+          zIndex: 5,
+          overflow: 'hidden'
+        }}>
+          <img 
+            src="/FE PNG/pexels-jose-martin-segura-benites-1422456152-27204278.png"
+            alt="Fashion Model"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center left',
+              opacity: 0.7,
+              filter: 'contrast(1.1) brightness(0.9)'
+            }}
+          />
+        </div>
+      </div>
+
+      {/* Right Section - Teal/Blue-Grey Background */}
+      <div style={{
+        flex: '1',
+        background: '#2a5f7a',
+        position: 'relative',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        padding: '40px',
+        height: '100vh',
+        clipPath: isMobile ? 'none' : 'none',
+        transition: 'all 0.4s ease'
+      }}>
+        
+        {/* Top Right Navigation */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '40px',
+          justifyContent: 'flex-end',
           position: 'relative',
           zIndex: 10
         }}>
           <span style={{
-            fontSize: isMobile ? '12px' : '14px',
+            color: '#ffffff',
+            fontSize: '16px',
             fontWeight: '500',
-            color: '#fff',
+            letterSpacing: '2px',
+            fontFamily: 'Arial, sans-serif'
+          }}>RU - ENG</span>
+          
+          {/* Search Icon */}
+          <div style={{
+            width: '24px',
+            height: '24px',
             cursor: 'pointer',
-            transition: 'all 0.3s ease'
-          }}
-          onMouseEnter={(e) => {
-            e.target.style.color = '#ff6b35';
-            e.target.style.transform = 'scale(1.05)';
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.color = '#fff';
-            e.target.style.transform = 'scale(1)';
-          }}
-          >take survey</span>
-        </div>
-      </div>
-
-      {/* Central Overlay Panel */}
-      <div 
-        style={{
-          position: 'absolute',
-          top: isMobile ? '25%' : '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: isMobile ? '90vw' : '500px',
-          height: isMobile ? '300px' : '500px',
-          zIndex: 20,
-          transition: 'all 0.4s ease'
-        }}
-      >
-        
-        {/* Split Background Panel */}
-        <div style={{
-          width: '100%',
-          height: '100%',
-          position: 'relative',
-          borderRadius: isMobile ? '15px' : '20px',
-          overflow: 'hidden',
-          boxShadow: '0 20px 40px rgba(0,0,0,0.3)',
-          transition: 'all 0.4s ease'
-        }}>
-          
-          {/* Left Half - Orange */}
-          <div style={{
-            position: 'absolute',
-            left: 0,
-            top: 0,
-            width: '50%',
-            height: '100%',
-            background: 'linear-gradient(135deg, #ff6b35, #f7931e)',
-            transition: 'all 0.4s ease'
-          }}></div>
-          
-          {/* Right Half - Dark Grey */}
-          <div style={{
-            position: 'absolute',
-            right: 0,
-            top: 0,
-            width: '50%',
-            height: '100%',
-            background: 'linear-gradient(135deg, #2c3e50, #34495e)',
-            transition: 'all 0.4s ease'
-          }}></div>
-
-          {/* Central Abstract Element - Black Ink/Smoke */}
-          <div style={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: isMobile ? '200px' : '300px',
-            height: isMobile ? '200px' : '300px',
-            background: 'radial-gradient(ellipse at center, #000 0%, #1a1a1a 40%, transparent 70%)',
-            borderRadius: '50%',
-            filter: 'blur(2px)',
-            opacity: 0.9,
-            transition: 'all 0.4s ease'
-          }}></div>
-
-          {/* Main Title Overlay */}
-          <div style={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            textAlign: 'center',
-            zIndex: 30
+            position: 'relative'
           }}>
-            {/* Logo Image */}
             <div style={{
-              marginBottom: '15px',
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-              transition: 'all 0.8s ease 0.5s'
-            }}>
-              <img 
-                src="/Faded Elegance Logo Final-10.png"
-                alt="Faded Elegance Logo"
-                style={{
-                  width: isMobile ? '180px' : '280px',
-                  height: 'auto',
-                  transition: 'all 0.3s ease'
-                }}
-              />
-            </div>
-            
-            <p style={{
-              fontSize: isMobile ? '14px' : '16px',
-              color: '#fff',
-              margin: '0',
-              fontWeight: '400',
-              textTransform: 'uppercase',
-              letterSpacing: '2px',
-              fontFamily: 'Cinzel, serif',
-              transition: 'all 0.3s ease',
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-              transitionDelay: '1.2s'
-            }}>
-              by luxury artisans
-            </p>
+              width: '14px',
+              height: '14px',
+              border: '2px solid #ffffff',
+              borderRadius: '50%',
+              position: 'absolute',
+              top: '2px',
+              left: '2px'
+            }}></div>
+            <div style={{
+              width: '2px',
+              height: '8px',
+              background: '#ffffff',
+              position: 'absolute',
+              bottom: '2px',
+              right: '2px',
+              transform: 'rotate(45deg)',
+              transformOrigin: 'bottom right'
+            }}></div>
           </div>
+        </div>
 
-          {/* Interactive Elements at Bottom */}
+        {/* Right Arrow Navigation */}
+        <div style={{
+          position: 'absolute',
+          right: '40px',
+          top: '50%',
+          transform: 'translateY(-50%)',
+          zIndex: 10
+        }}>
           <div style={{
-            position: 'absolute',
-            bottom: isMobile ? '20px' : '40px',
-            left: '50%',
-            transform: 'translateX(-50%)',
+            width: '50px',
+            height: '50px',
+            border: '2px solid #ffffff',
+            borderRadius: '50%',
             display: 'flex',
             alignItems: 'center',
-            gap: isMobile ? '15px' : '20px',
-            zIndex: 30
+            justifyContent: 'center',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease',
+            background: 'rgba(255,255,255,0.1)'
           }}>
-            
-            {/* Left Line */}
             <div style={{
-              width: isMobile ? '40px' : '60px',
-              height: '2px',
-              background: '#fff'
-            }}></div>
-            
-            {/* Play Button */}
-            <div style={{
-              width: isMobile ? '50px' : '60px',
-              height: isMobile ? '50px' : '60px',
-              background: '#fff',
-              borderRadius: '50%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              cursor: 'pointer',
-              boxShadow: '0 10px 30px rgba(0,0,0,0.3)',
-              transition: 'all 0.3s ease'
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.transform = 'scale(1.1)';
-              e.target.style.boxShadow = '0 15px 40px rgba(0,0,0,0.4)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.transform = 'scale(1)';
-              e.target.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
-            }}
-            >
-              <div style={{
-                width: 0,
-                height: 0,
-                borderLeft: isMobile ? '12px solid #000' : '15px solid #000',
-                borderTop: isMobile ? '8px solid transparent' : '10px solid transparent',
-                borderBottom: isMobile ? '8px solid transparent' : '10px solid transparent',
-                marginLeft: '3px',
-                transition: 'all 0.3s ease'
-              }}></div>
-            </div>
-            
-            {/* Right Line */}
-            <div style={{
-              width: isMobile ? '40px' : '60px',
-              height: '2px',
-              background: '#fff'
+              width: 0,
+              height: 0,
+              borderLeft: '10px solid #ffffff',
+              borderTop: '8px solid transparent',
+              borderBottom: '8px solid transparent',
+              marginRight: '-3px'
             }}></div>
           </div>
         </div>
+
+        {/* Main Image */}
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '85%',
+          height: '85%',
+          zIndex: 5
+        }}>
+          <img 
+            src="/FE PNG/pexels-jose-martin-segura-benites-1422456152-27204279.png"
+            alt="Rosie Huntington-Whiteley"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center',
+              filter: 'contrast(1.05) brightness(1.02)'
+            }}
+          />
+        </div>
+
+        {/* Right Side Content */}
+        <div style={{
+          color: '#ffffff',
+          position: 'relative',
+          zIndex: 10,
+          marginRight: '120px',
+          marginTop: 'auto',
+          marginBottom: '120px',
+          textAlign: 'right'
+        }}>
+          <p style={{
+            fontSize: 'clamp(1.2rem, 3vw, 1.8rem)',
+            fontWeight: '400',
+            margin: '0 0 30px 0',
+            fontFamily: 'Arial, sans-serif',
+            letterSpacing: '1px',
+            lineHeight: '1.3',
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+            transition: 'all 0.8s ease 1.2s',
+            textTransform: 'uppercase'
+          }}>
+            {splitText('7 PICTURES THAT WILL MAKE YOU WANT TO BE')}
+          </p>
+        </div>
+
+        {/* Bottom Right Social Media */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '30px',
+          justifyContent: 'flex-end',
+          position: 'relative',
+          zIndex: 10
+        }}>
+          {['IN', 'FB', 'YT'].map((platform) => (
+            <span 
+              key={platform}
+              style={{
+                color: '#ffffff',
+                fontSize: '16px',
+                fontWeight: '600',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                fontFamily: 'Arial, sans-serif',
+                letterSpacing: '1px'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.color = '#ffd700';
+                e.target.style.transform = 'scale(1.1)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.color = '#ffffff';
+                e.target.style.transform = 'scale(1)';
+              }}
+            >
+              {platform}
+            </span>
+          ))}
+        </div>
       </div>
+
+      {/* Mobile Responsive Overlay */}
+      {isMobile && (
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '90vw',
+          height: '70vh',
+          zIndex: 20,
+          background: 'rgba(26, 26, 26, 0.95)',
+          borderRadius: '20px',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: '40px',
+          textAlign: 'center',
+          border: '1px solid rgba(255,255,255,0.1)'
+        }}>
+          <h1 style={{
+            fontSize: 'clamp(2.5rem, 8vw, 4rem)',
+            fontWeight: '300',
+            margin: '0 0 15px 0',
+            color: '#ffffff',
+            fontFamily: 'Arial, sans-serif',
+            letterSpacing: '2px',
+            textTransform: 'uppercase'
+          }}>
+            {splitText('ROSIE')}
+          </h1>
+          <h2 style={{
+            fontSize: 'clamp(1.2rem, 4vw, 2rem)',
+            fontWeight: '300',
+            margin: '0 0 25px 0',
+            color: '#ffffff',
+            fontFamily: 'Arial, sans-serif',
+            letterSpacing: '1px',
+            opacity: 0.9,
+            textTransform: 'uppercase'
+          }}>
+            {splitText('HUNTINGTON-WHITELEY')}
+          </h2>
+          <p style={{
+            fontSize: 'clamp(1rem, 3vw, 1.4rem)',
+            fontWeight: '400',
+            margin: '0',
+            color: '#ffffff',
+            fontFamily: 'Arial, sans-serif',
+            letterSpacing: '1px',
+            lineHeight: '1.3',
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+            transition: 'all 0.8s ease 1.2s',
+            textTransform: 'uppercase'
+          }}>
+            {splitText('7 PICTURES THAT WILL MAKE YOU WANT TO BE')}
+          </p>
+        </div>
+      )}
     </div>
   );
 };
