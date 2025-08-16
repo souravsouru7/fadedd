@@ -6,10 +6,10 @@ export default function Hero() {
     <div className="w-full h-screen bg-black relative overflow-hidden">
       {/* Split Background */}
       <div className="absolute inset-0 flex">
-        {/* Left side - Gray */}
-        <div className="w-1/2 bg-gradient-to-br from-gray-600 via-gray-700 to-gray-800"></div>
-        {/* Right side - Teal/Blue */}
-        <div className="w-1/2 bg-gradient-to-br from-teal-500 via-teal-600 to-blue-600"></div>
+        {/* Left side - Pink/Red gradient */}
+        <div className="w-1/2 bg-gradient-to-br from-[#F74966] via-[#F74966] to-[#e03a5a]"></div>
+        {/* Right side - Dark Red gradient */}
+        <div className="w-1/2 bg-gradient-to-br from-[#6D0F23] via-[#6D0F23] to-[#5a0a1d]"></div>
       </div>
 
       {/* Vertical center border/divider */}
@@ -39,11 +39,11 @@ export default function Hero() {
         {/* Left Section - Single Clean Image */}
         <div className="w-1/2 relative">
           {/* Main left image */}
-          <div className="absolute top-20 left-10 w-96 h-[600px] transform -rotate-6 z-10">
+          <div className="absolute top-20 left-10 w-96 h-[600px] z-10 animate-fade-in-left">
             <img 
-              src="/FE PNG/pexels-jose-martin-segura-benites-1422456152-27298274.png" 
-              alt="Fashion Model in Light Blazer"
-              className="w-full h-full object-cover object-center rounded-2xl shadow-2xl"
+              src="/WhatsApp Image 2025-08-15 at 12.50.08_4d5f6e1e.jpg" 
+              alt="Fashion Model"
+              className="w-full h-full object-cover object-center rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-700 ease-out hover:shadow-3xl"
             />
           </div>
         </div>
@@ -51,11 +51,11 @@ export default function Hero() {
         {/* Right Section - Single Clean Image */}
         <div className="w-1/2 relative">
           {/* Main right image */}
-          <div className="absolute top-16 right-16 w-[500px] h-[650px] transform rotate-3 z-10">
+          <div className="absolute top-16 right-16 w-[500px] h-[650px] z-10 animate-fade-in-right">
             <img 
-              src="/FE PNG/pexels-jose-martin-segura-benites-1422456152-27381290.png" 
-              alt="Fashion Model on Director's Chair"
-              className="w-full h-full object-cover object-center rounded-2xl shadow-2xl"
+              src="/WhatsApp Image 2025-08-15 at 12.50.09_a56163d1.jpg" 
+              alt="Fashion Model"
+              className="w-full h-full object-cover object-center rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-700 ease-out hover:shadow-3xl"
             />
           </div>
           
