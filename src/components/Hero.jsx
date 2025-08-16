@@ -1,269 +1,238 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, Star, Award, Sparkles, Crown } from 'lucide-react';
+import { ChevronRight, Sparkles, Award, Star } from 'lucide-react';
 
-const Hero = () => {
-  const [isLoaded, setIsLoaded] = useState(false);
+export default function Hero() {
+  const [currentImage, setCurrentImage] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+
+  const luxuryImages = [
+    "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800&h=600&fit=crop&crop=center",
+    "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&h=600&fit=crop&crop=center",
+    "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&h=600&fit=crop&crop=center"
+  ];
 
   useEffect(() => {
-    setIsLoaded(true);
+    setIsVisible(true);
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % luxuryImages.length);
+    }, 4000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="h-screen relative overflow-hidden">
-      
-      {/* Premium Background Image with Overlay */}
-      <div className="absolute inset-0">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')`
-          }}
-        />
+    <div className="relative min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800 overflow-hidden">
+      {/* Animated Background Pattern */}
+      <div className="absolute inset-0 opacity-20">
+        {/* Flowing Gradient Lines */}
+        <div className="absolute inset-0 bg-gradient-to-r from-amber-500/20 via-transparent to-amber-500/20 animate-pulse"></div>
         
-        {/* Multi-layer Gradients for Depth */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/70" />
-        <div className="absolute inset-0 bg-gradient-to-tr from-yellow-900/30 via-transparent to-amber-900/20" />
-        <div className="absolute inset-0 bg-gradient-to-bl from-transparent via-yellow-800/10 to-amber-700/20" />
+        {/* Floating Orbs */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/3 right-1/3 w-64 h-64 bg-yellow-400/5 rounded-full blur-2xl animate-pulse delay-500"></div>
+        
+        {/* Animated Grid Pattern */}
+        <div className="absolute inset-0 opacity-30"
+             style={{
+               backgroundImage: `
+                 linear-gradient(rgba(245, 158, 11, 0.1) 1px, transparent 1px),
+                 linear-gradient(90deg, rgba(245, 158, 11, 0.1) 1px, transparent 1px)
+               `,
+               backgroundSize: '50px 50px',
+               animation: 'gridMove 20s linear infinite'
+             }}>
+        </div>
+        
+        {/* Leather Texture Pattern */}
+        <div className="absolute inset-0 opacity-5"
+             style={{
+               backgroundImage: `
+                 radial-gradient(circle at 25% 25%, rgba(245, 158, 11, 0.3) 2px, transparent 2px),
+                 radial-gradient(circle at 75% 75%, rgba(245, 158, 11, 0.2) 1px, transparent 1px)
+               `,
+               backgroundSize: '30px 30px, 20px 20px'
+             }}>
+        </div>
+        
+        {/* Flowing Lines */}
+        <svg className="absolute inset-0 w-full h-full" style={{ filter: 'blur(1px)' }}>
+          <defs>
+            <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="rgba(245, 158, 11, 0.4)" />
+              <stop offset="50%" stopColor="rgba(245, 158, 11, 0.1)" />
+              <stop offset="100%" stopColor="rgba(245, 158, 11, 0.4)" />
+            </linearGradient>
+          </defs>
+          <path d="M0,300 Q400,100 800,200 T1600,150" stroke="url(#lineGradient)" strokeWidth="2" fill="none">
+            <animate attributeName="d" 
+                     values="M0,300 Q400,100 800,200 T1600,150;M0,200 Q400,300 800,100 T1600,250;M0,300 Q400,100 800,200 T1600,150" 
+                     dur="15s" 
+                     repeatCount="indefinite"/>
+          </path>
+          <path d="M0,500 Q600,200 1200,400 T2400,300" stroke="url(#lineGradient)" strokeWidth="1" fill="none" opacity="0.6">
+            <animate attributeName="d" 
+                     values="M0,500 Q600,200 1200,400 T2400,300;M0,400 Q600,500 1200,200 T2400,450;M0,500 Q600,200 1200,400 T2400,300" 
+                     dur="20s" 
+                     repeatCount="indefinite"/>
+          </path>
+        </svg>
+        
+        {/* Sparkling Particles */}
+        <div className="absolute top-1/4 left-1/5 w-2 h-2 bg-amber-400 rounded-full animate-ping"></div>
+        <div className="absolute top-3/4 left-3/4 w-1 h-1 bg-yellow-300 rounded-full animate-ping delay-1000"></div>
+        <div className="absolute top-1/2 left-4/5 w-1.5 h-1.5 bg-amber-300 rounded-full animate-ping delay-500"></div>
+        <div className="absolute top-1/6 right-1/4 w-1 h-1 bg-amber-500 rounded-full animate-ping delay-2000"></div>
+        <div className="absolute bottom-1/4 left-1/3 w-2 h-2 bg-yellow-400 rounded-full animate-ping delay-1500"></div>
       </div>
 
-      {/* Enhanced Animated Elements */}
-      <div className="absolute inset-0">
-        {/* Premium Golden Orbs */}
-        <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-yellow-400/20 via-amber-500/15 to-yellow-600/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
-        <div className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-to-br from-amber-300/25 via-yellow-400/15 to-amber-600/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '6s', animationDelay: '2s' }} />
-        
-        {/* Luxury Sparkles */}
-        {Array.from({ length: 20 }).map((_, i) => (
-          <div
-            key={i}
-            className="absolute animate-pulse"
-            style={{
-              left: `${5 + Math.random() * 90}%`,
-              top: `${5 + Math.random() * 90}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${2 + Math.random() * 3}s`
-            }}
-          >
-            <Sparkles className="w-3 h-3 text-yellow-400/60" />
+      {/* CSS Animation Styles */}
+      <style jsx>{`
+        @keyframes gridMove {
+          0% { transform: translateX(0) translateY(0); }
+          100% { transform: translateX(50px) translateY(50px); }
+        }
+      `}</style>
+
+      {/* Navigation */}
+      <nav className="relative z-50 flex items-center justify-between px-6 lg:px-12 py-6">
+        <div className="flex items-center space-x-3">
+          <div className="w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center">
+            <Sparkles className="w-6 h-6 text-black" />
           </div>
-        ))}
+          <div>
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-amber-400 to-amber-200 bg-clip-text text-transparent">
+              Faded Elegance
+            </h1>
+            <p className="text-xs text-gray-400 tracking-widest">LUXURY RESTORATION</p>
+          </div>
+        </div>
         
-        {/* Floating Diamonds */}
-        {Array.from({ length: 8 }).map((_, i) => (
-          <div
-            key={`diamond-${i}`}
-            className="absolute w-2 h-2 bg-gradient-to-br from-yellow-300 to-amber-500 rotate-45 animate-bounce opacity-70"
-            style={{
-              left: `${15 + Math.random() * 70}%`,
-              top: `${15 + Math.random() * 70}%`,
-              animationDelay: `${Math.random() * 4}s`,
-              animationDuration: `${4 + Math.random() * 2}s`
-            }}
-          />
-        ))}
-        
-        {/* Geometric Luxury Elements */}
-        <div className="absolute top-1/4 left-1/4 w-6 h-6 border-2 border-yellow-400/40 rotate-45 animate-spin" style={{ animationDuration: '20s' }} />
-        <div className="absolute top-3/4 right-1/4 w-8 h-8 border-2 border-amber-400/50 rounded-full animate-ping" style={{ animationDuration: '4s' }} />
-        <div className="absolute top-1/2 left-1/6 w-4 h-4 bg-gradient-to-r from-yellow-400/60 to-amber-500/60 rotate-45 animate-pulse" />
-        
-        {/* Moving Light Beams */}
-        <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-yellow-300/30 via-yellow-400/20 to-transparent transform -skew-x-12 animate-pulse" />
-        <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-amber-300/25 via-amber-400/15 to-transparent transform skew-x-12 animate-pulse" style={{ animationDelay: '2s' }} />
-        
-        {/* Radial Shine Effect */}
-        <div 
-          className="absolute top-1/2 left-1/2 w-full h-full transform -translate-x-1/2 -translate-y-1/2 opacity-20"
-          style={{
-            background: `radial-gradient(circle at center, rgba(255, 193, 7, 0.3) 0%, rgba(255, 193, 7, 0.1) 30%, transparent 60%)`,
-            animation: 'shine 6s ease-in-out infinite'
-          }}
-        />
-      </div>
+        <div className="hidden md:flex items-center space-x-8 text-gray-300">
+          <a href="#" className="hover:text-amber-400 transition-colors">Services</a>
+          <a href="#" className="hover:text-amber-400 transition-colors">Gallery</a>
+          <a href="#" className="hover:text-amber-400 transition-colors">About</a>
+          <button className="bg-amber-500 text-black px-6 py-2 rounded-full font-medium hover:bg-amber-400 transition-colors">
+            Contact Us
+          </button>
+        </div>
+      </nav>
 
-      {/* Main Content */}
-      <div className="relative z-10 h-full flex items-center">
-        <div className="container mx-auto px-6 lg:px-16 max-w-7xl">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            
-            {/* Left Content */}
-            <div className={`space-y-8 transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      {/* Main Hero Content */}
+      <div className="relative z-30 flex items-center justify-between px-6 lg:px-12 py-12 lg:py-20">
+        {/* Left Content */}
+        <div className={`flex-1 max-w-3xl transform transition-all duration-1000 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}>
+          {/* Premium Badge */}
+          <div className="inline-flex items-center space-x-2 bg-amber-500/10 border border-amber-500/30 rounded-full px-4 py-2 mb-8">
+            <Award className="w-4 h-4 text-amber-400" />
+            <span className="text-amber-400 text-sm font-medium">Premium Craftsmanship Since 2020</span>
+          </div>
+
+          {/* Main Headlines */}
+          <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+            <span className="bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent">
+              Where Luxury
+            </span>
+            <br />
+            <span className="bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-400 bg-clip-text text-transparent">
+              is Reborn
+            </span>
+          </h1>
+
+          <p className="text-xl lg:text-2xl text-gray-300 mb-8 leading-relaxed max-w-2xl">
+            Premium Repair & Restoration for Your Most Loved Fashion Pieces
+          </p>
+
+          <p className="text-lg text-gray-400 mb-12 leading-relaxed max-w-2xl">
+            Welcome to Faded Elegance, where timeless luxury meets expert craftsmanship. We specialize in restoring, repairing, and customizing high-end shoes, bags, and leather goods for men, women, and kids. From color revival to customized artwork, every piece we touch regains its beauty, elegance, and charm.
+          </p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 mb-12">
+            <button className="group bg-gradient-to-r from-amber-500 to-amber-600 text-black px-8 py-4 rounded-full font-bold text-lg hover:from-amber-400 hover:to-amber-500 transform hover:scale-105 transition-all duration-300 flex items-center justify-center">
+              Start Your Restoration
+              <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+            </button>
+            <button className="border-2 border-amber-500 text-amber-400 px-8 py-4 rounded-full font-bold text-lg hover:bg-amber-500 hover:text-black transition-all duration-300">
+              View Our Work
+            </button>
+          </div>
+
+          {/* Stats */}
+          <div className="flex flex-wrap gap-8 text-center sm:text-left">
+            <div>
+              <div className="text-3xl font-bold text-amber-400">500+</div>
+              <div className="text-gray-400">Pieces Restored</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-amber-400">98%</div>
+              <div className="text-gray-400">Client Satisfaction</div>
+            </div>
+            <div className="flex items-center">
+              <div className="flex text-amber-400 mr-2">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-5 h-5 fill-current" />
+                ))}
+              </div>
+              <div className="text-gray-400">Premium Rating</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Visual Section */}
+        <div className={`hidden lg:block flex-1 max-w-lg transform transition-all duration-1000 delay-300 ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}>
+          <div className="relative">
+            {/* Main Image Container */}
+            <div className="relative w-full h-96 rounded-3xl overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10"></div>
+              {luxuryImages.map((image, index) => (
+                <img
+                  key={index}
+                  src={image}
+                  alt="Luxury restoration work"
+                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+                    index === currentImage ? 'opacity-100' : 'opacity-0'
+                  }`}
+                />
+              ))}
               
-              {/* Premium Badge with Crown */}
-              <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-yellow-500/90 to-amber-600/90 backdrop-blur-lg border border-yellow-300/50 px-6 py-3 rounded-full shadow-2xl">
-                <Crown className="w-5 h-5 text-white" />
-                <span className="text-white font-bold text-sm tracking-wider">UAE'S PREMIER LUXURY RESTORATION</span>
-              </div>
-
-              {/* Main Headline with Enhanced Typography */}
-              <div className="space-y-4">
-                <h1 className="text-5xl lg:text-8xl font-black leading-tight tracking-tight">
-                  <span className="block text-white drop-shadow-lg">Where</span>
-                  <span className="block bg-gradient-to-r from-yellow-400 via-amber-300 to-yellow-500 bg-clip-text text-transparent drop-shadow-lg">
-                    Luxury
-                  </span>
-                  <span className="block text-white drop-shadow-lg">is Reborn</span>
-                </h1>
-
-                {/* Enhanced Rating */}
-                <div className="flex items-center space-x-4 pt-4">
-                  <div className="flex space-x-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400 drop-shadow-lg" />
-                    ))}
+              {/* Overlay Content */}
+              <div className="absolute bottom-6 left-6 right-6 z-20">
+                <div className="bg-black/40 backdrop-blur-sm rounded-2xl p-4 border border-amber-500/30">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div className="text-amber-400 font-bold">Before & After</div>
+                      <div className="text-white text-sm">Expert Restoration</div>
+                    </div>
+                    <div className="w-12 h-12 bg-amber-500 rounded-full flex items-center justify-center">
+                      <Sparkles className="w-6 h-6 text-black" />
+                    </div>
                   </div>
-                  <span className="text-white font-bold text-lg drop-shadow">5.0</span>
-                  <span className="text-yellow-300">•</span>
-                  <span className="text-gray-200 font-semibold">10,000+ clients</span>
-                </div>
-              </div>
-
-              {/* Enhanced Subheadline */}
-              <h2 className="text-xl lg:text-3xl font-bold text-gray-100 leading-relaxed max-w-xl drop-shadow-lg">
-                Premium Repair & Restoration for Your Most Loved Fashion Pieces
-              </h2>
-
-              {/* Description with Better Contrast */}
-              <p className="text-gray-200 text-lg leading-relaxed max-w-xl drop-shadow">
-                Welcome to Faded Elegance, where timeless luxury meets expert craftsmanship. We specialize in restoring, repairing, and customizing high-end shoes, bags, and leather goods for men, women, and kids.
-              </p>
-
-              {/* Enhanced CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <button className="group bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-600 text-white px-10 py-4 rounded-full font-bold text-lg flex items-center justify-center space-x-3 shadow-2xl hover:shadow-yellow-500/25 hover:-translate-y-1 transition-all duration-300 border-2 border-yellow-400">
-                  <span>Start Your Restoration</span>
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                </button>
-                
-                <button className="border-2 border-yellow-400 bg-white/10 backdrop-blur-sm text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-yellow-400 hover:text-black hover:-translate-y-1 transition-all duration-300">
-                  View Gallery
-                </button>
-              </div>
-
-              {/* Enhanced Trust Indicators */}
-              <div className="flex items-center space-x-10 pt-6">
-                <div className="text-center">
-                  <div className="text-3xl font-black bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">50K+</div>
-                  <div className="text-gray-300 text-sm font-semibold">Items Restored</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-black bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">15+</div>
-                  <div className="text-gray-300 text-sm font-semibold">Years Experience</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-black bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">99%</div>
-                  <div className="text-gray-300 text-sm font-semibold">Satisfaction</div>
                 </div>
               </div>
             </div>
 
-            {/* Enhanced Right Visual */}
-            <div className={`relative transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              
-              {/* Luxury Product Display */}
-              <div className="relative bg-gradient-to-br from-white/90 via-white/80 to-white/70 backdrop-blur-xl rounded-3xl p-12 shadow-2xl border border-yellow-300/30">
-                
-                {/* Glowing Border Effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 via-amber-500/10 to-yellow-600/20 rounded-3xl blur-xl -z-10"></div>
-                
-                {/* Center Focus Item with Enhanced Design */}
-                <div className="flex justify-center mb-10">
-                  <div className="w-32 h-32 bg-gradient-to-br from-yellow-400 via-amber-500 to-yellow-600 rounded-2xl flex items-center justify-center shadow-2xl relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
-                    <div className="w-20 h-20 bg-gradient-to-br from-amber-700 to-yellow-800 rounded-lg flex items-center justify-center shadow-inner relative z-10">
-                      <span className="text-3xl">👜</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Enhanced Product Grid */}
-                <div className="grid grid-cols-4 gap-4 mb-8">
-                  {[
-                    { icon: '👠', bg: 'from-pink-400 to-rose-500' },
-                    { icon: '⌚', bg: 'from-blue-400 to-indigo-500' },
-                    { icon: '🧥', bg: 'from-green-400 to-emerald-500' },
-                    { icon: '👔', bg: 'from-purple-400 to-violet-500' }
-                  ].map((item, index) => (
-                    <div key={index} className={`w-16 h-16 bg-gradient-to-br ${item.bg} rounded-xl flex items-center justify-center shadow-lg hover:shadow-xl hover:-translate-y-2 hover:scale-105 transition-all duration-300 cursor-pointer`}>
-                      <span className="text-xl filter drop-shadow-sm">{item.icon}</span>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Enhanced Service Categories */}
-                <div className="space-y-3">
-                  {[
-                    { name: 'Handbags & Purses', level: 'Premium', color: 'text-yellow-600' },
-                    { name: 'Luxury Footwear', level: 'Master Craft', color: 'text-amber-600' },
-                    { name: 'Leather Goods', level: 'Expert Care', color: 'text-yellow-700' }
-                  ].map((service, index) => (
-                    <div key={index} className="flex items-center justify-between py-2 px-3 bg-gradient-to-r from-gray-50 to-white rounded-lg shadow-sm">
-                      <span className="text-gray-700 font-semibold">{service.name}</span>
-                      <span className={`${service.color} font-bold text-sm px-3 py-1 bg-yellow-100 rounded-full`}>
-                        {service.level}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Enhanced Quality Badge */}
-              <div className="absolute -top-6 -right-6 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-full p-4 shadow-2xl border-4 border-white animate-bounce" style={{ animationDuration: '3s' }}>
-                <span className="text-white text-2xl">🏆</span>
-              </div>
-
-              {/* Premium Certification Badge */}
-              <div className="absolute -bottom-4 -left-4 bg-gradient-to-br from-amber-600 to-yellow-700 rounded-full p-3 shadow-xl border-4 border-white">
-                <Award className="w-6 h-6 text-white" />
-              </div>
-
-              {/* Enhanced Floating Elements */}
-              <div className="absolute top-12 left-8 w-2 h-2 bg-yellow-400 rounded-full animate-ping" />
-              <div className="absolute bottom-24 right-12 w-2 h-2 bg-amber-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
-              <div className="absolute top-1/2 -left-6 w-2 h-2 bg-yellow-300 rounded-full animate-bounce" style={{ animationDelay: '2s' }} />
-              
-              {/* Luxury Sparkle Effects */}
-              <Sparkles className="absolute top-8 right-16 w-4 h-4 text-yellow-400 animate-pulse" />
-              <Sparkles className="absolute bottom-16 left-12 w-3 h-3 text-amber-500 animate-pulse" style={{ animationDelay: '1.5s' }} />
+            {/* Floating Elements */}
+            <div className="absolute -top-6 -right-6 w-24 h-24 bg-gradient-to-br from-amber-400/20 to-amber-600/20 rounded-full blur-xl animate-pulse"></div>
+            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-br from-amber-400/10 to-amber-600/10 rounded-full blur-2xl animate-pulse delay-1000"></div>
+            
+            {/* Image Indicators */}
+            <div className="flex justify-center mt-6 space-x-2">
+              {luxuryImages.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentImage(index)}
+                  className={`w-3 h-3 rounded-full transition-colors ${
+                    index === currentImage ? 'bg-amber-400' : 'bg-gray-600'
+                  }`}
+                />
+              ))}
             </div>
           </div>
         </div>
       </div>
 
-      {/* Enhanced Custom Animations */}
-      <style jsx>{`
-        @keyframes wave {
-          0%, 100% { 
-            transform: translateX(0%) rotate(0deg);
-            opacity: 0.3;
-          }
-          25% {
-            transform: translateX(5%) rotate(1deg);
-            opacity: 0.4;
-          }
-          50% { 
-            transform: translateX(-5%) rotate(-1deg);
-            opacity: 0.2;
-          }
-          75% {
-            transform: translateX(3%) rotate(0.5deg);
-            opacity: 0.35;
-          }
-        }
-        
-        @keyframes shine {
-          0%, 100% {
-            transform: translate(-50%, -50%) scale(1);
-            opacity: 0.2;
-          }
-          50% {
-            transform: translate(-50%, -50%) scale(1.1);
-            opacity: 0.3;
-          }
-        }
-      `}</style>
-    </section>
+      {/* Bottom Gradient */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent"></div>
+    </div>
   );
-};
-
-export default Hero;
+}
