@@ -81,11 +81,11 @@ export default function Hero() {
           {/* Logo */}
           <div className="bg-white/90 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20">
             <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-gradient-to-br from-amber-400 to-yellow-500 rounded-full flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-br from-[#D89F30] to-[#734918] rounded-full flex items-center justify-center">
                 <Sparkles className="w-4 h-4 text-white" />
               </div>
               <div>
-                <h1 className="text-lg font-bold text-gray-900 tracking-wide">FADED ELEGANCE</h1>
+                <h1 className="text-lg font-bold text-gray-900 tracking-wide" style={{ fontFamily: 'AbhayaLibre, serif' }}>FADED ELEGANCE</h1>
               </div>
             </div>
           </div>
@@ -93,9 +93,9 @@ export default function Hero() {
           {/* Navigation Links */}
           <div className="bg-gray-800/80 backdrop-blur-sm rounded-full px-8 py-3 border border-white/10">
             <div className="flex items-center space-x-8">
-              <a href="#" className="text-white hover:text-amber-400 transition-colors font-medium">HOME</a>
-              <a href="#" className="text-white hover:text-amber-400 transition-colors font-medium">ABOUT US</a>
-              <a href="#" className="text-white hover:text-amber-400 transition-colors font-medium">CONTACT</a>
+              <a href="#" className="text-white hover:text-[#D89F30] transition-colors font-medium" style={{ fontFamily: 'AbhayaLibre, serif' }}>HOME</a>
+              <a href="#" className="text-white hover:text-[#D89F30] transition-colors font-medium" style={{ fontFamily: 'AbhayaLibre, serif' }}>ABOUT US</a>
+              <a href="#" className="text-white hover:text-[#D89F30] transition-colors font-medium" style={{ fontFamily: 'AbhayaLibre, serif' }}>CONTACT</a>
             </div>
           </div>
         </div>
@@ -110,12 +110,12 @@ export default function Hero() {
             <div className={`lg:col-span-6 space-y-8 transform transition-all duration-1000 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}>
               {/* Main Headline */}
               <div className="space-y-4">
-                <h1 className="text-6xl lg:text-7xl font-bold text-white leading-tight">
+                <h1 className="text-6xl lg:text-7xl font-bold text-white leading-tight" style={{ fontFamily: 'AbhayaLibre, serif' }}>
                   One-Stop Solution
                   <br />
                   <span className="text-white">for</span>
                   <br />
-                  <span className="text-transparent bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 bg-clip-text">
+                  <span className="text-transparent bg-gradient-to-r from-[#D89F30] via-[#734918] to-[#D89F30] bg-clip-text">
                     Luxury Leather
                     <br />
                     Care
@@ -124,13 +124,13 @@ export default function Hero() {
               </div>
 
               {/* Subtitle */}
-              <p className="text-xl text-white/90 font-light leading-relaxed max-w-lg">
+              <p className="text-xl text-white/90 font-light leading-relaxed max-w-lg" style={{ fontFamily: 'AbhayaLibre, serif' }}>
                 With Convenient Pickup & Delivery Across the UAE
               </p>
 
               {/* CTA Button */}
               <div className="pt-4">
-                <button className="group bg-gradient-to-r from-amber-500 to-yellow-500 text-white px-8 py-4 rounded-full font-bold text-lg flex items-center space-x-3 hover:from-amber-400 hover:to-yellow-400 transition-all duration-300 shadow-lg hover:shadow-2xl">
+                <button className="group bg-gradient-to-r from-[#D89F30] to-[#734918] text-white px-8 py-4 rounded-full font-bold text-lg flex items-center space-x-3 hover:from-[#734918] hover:to-[#D89F30] transition-all duration-300 shadow-lg hover:shadow-2xl" style={{ fontFamily: 'AbhayaLibre, serif' }}>
                   <span>FREE CONSULTATION</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
@@ -145,17 +145,17 @@ export default function Hero() {
                 {/* Stars */}
                 <div className="flex space-x-1 mb-4">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                    <Star key={i} className="w-5 h-5 fill-[#D89F30] text-[#D89F30]" />
                   ))}
                 </div>
                 
                 {/* Testimonial Text */}
-                <blockquote className="text-white text-lg font-medium mb-4 leading-relaxed">
+                <blockquote className="text-white text-lg font-medium mb-4 leading-relaxed" style={{ fontFamily: 'AbhayaLibre, serif' }}>
                   "If you have an old bag that you don't love anymore, send it to Faded Elegance and they will handle it"
                 </blockquote>
                 
                 {/* Attribution */}
-                <p className="text-white/70 text-sm">
+                <p className="text-white/70 text-sm" style={{ fontFamily: 'AbhayaLibre, serif' }}>
                   As Sarah shared in her Google Review
                 </p>
               </div>
@@ -164,21 +164,25 @@ export default function Hero() {
               <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-8 ml-auto max-w-sm border border-white/30">
                 <div className="relative">
                   <img
-                    src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400&h=300&fit=crop&crop=center"
-                    alt="Luxury leather bag restoration"
+                    src="/img1.jpg"
+                    alt="Luxury leather craftsmanship showcase"
                     className="w-full h-48 object-cover rounded-2xl mb-4"
+                    onError={(e) => {
+                      console.error('Product image failed to load:', e.target.src);
+                      e.target.src = "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400&h=300&fit=crop&crop=center";
+                    }}
                   />
-                  <div className="absolute top-4 right-4 bg-amber-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                  <div className="absolute top-4 right-4 bg-[#D89F30] text-white px-3 py-1 rounded-full text-sm font-bold" style={{ fontFamily: 'AbhayaLibre, serif' }}>
                     PREMIUM
                   </div>
                 </div>
                 
                 <div className="space-y-2">
-                  <h3 className="text-xl font-bold text-gray-900">Master Restoration</h3>
-                  <p className="text-gray-600">Professional leather care & repair</p>
+                  <h3 className="text-xl font-bold text-gray-900" style={{ fontFamily: 'AbhayaLibre, serif' }}>Master Restoration</h3>
+                  <p className="text-gray-600" style={{ fontFamily: 'AbhayaLibre, serif' }}>Professional leather care & repair</p>
                   <div className="flex items-center justify-between pt-2">
-                    <span className="text-2xl font-bold text-amber-600">From AED 299</span>
-                    <button className="bg-gray-900 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-800 transition-colors">
+                    <span className="text-2xl font-bold text-[#D89F30]" style={{ fontFamily: 'AbhayaLibre, serif' }}>From AED 299</span>
+                    <button className="bg-gray-900 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-800 transition-colors" style={{ fontFamily: 'AbhayaLibre, serif' }}>
                       Book Now
                     </button>
                   </div>
@@ -203,9 +207,22 @@ export default function Hero() {
 
       {/* Floating Decorative Elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-amber-400/60 rounded-full animate-ping" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-1/2 right-1/4 w-3 h-3 bg-yellow-400/40 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
-        <div className="absolute bottom-1/3 left-1/3 w-2 h-2 bg-amber-300/50 rounded-full animate-bounce" style={{ animationDelay: '0.5s' }} />
+        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-[#D89F30]/60 rounded-full animate-ping" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 right-1/4 w-3 h-3 bg-[#734918]/40 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute bottom-1/3 left-1/3 w-2 h-2 bg-[#D89F30]/50 rounded-full animate-bounce" style={{ animationDelay: '0.5s' }} />
+        
+        {/* Added img1.jpg as floating decorative element */}
+        <div className="absolute top-1/4 right-1/4 w-32 h-32 opacity-90 animate-float z-40">
+          <img
+            src="/img1.jpg"
+            alt="Decorative leather element"
+            className="w-full h-full object-cover rounded-full border-4 border-[#D89F30] shadow-2xl"
+            onError={(e) => {
+              console.error('Image failed to load:', e.target.src);
+              e.target.style.display = 'none';
+            }}
+          />
+        </div>
       </div>
 
       {/* Bottom gradient */}

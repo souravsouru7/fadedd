@@ -1,11 +1,14 @@
+/* Import AbhayaLibre SemiBold font */
+@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'AbhayaLibre', 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: 600;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -17,44 +20,42 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Inter', sans-serif;
-  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
-  min-height: 100vh;
+/* Custom color variables */
+:root {
+  --color-primary: #D89F30;
+  --color-secondary: #734918;
 }
 
-/* Custom luxury typography */
+/* Custom luxury typography with AbhayaLibre */
 .luxury-title {
-  font-family: 'Playfair Display', serif;
-  font-weight: 900;
+  font-family: 'AbhayaLibre', serif;
+  font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  background: linear-gradient(135deg, #d97706 0%, #f59e0b 25%, #eab308 50%, #f59e0b 75%, #d97706 100%);
+  background: linear-gradient(135deg, #D89F30 0%, #734918 50%, #D89F30 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 4px 8px rgba(217, 119, 6, 0.3);
+  text-shadow: 0 4px 8px rgba(216, 159, 48, 0.3);
 }
 
 .luxury-subtitle {
-  font-family: 'Inter', sans-serif;
-  font-weight: 300;
+  font-family: 'AbhayaLibre', serif;
+  font-weight: 600;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: #6b7280;
+  color: #734918;
 }
 
 .luxury-nav {
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
+  font-family: 'AbhayaLibre', serif;
+  font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .luxury-button {
-  font-family: 'Inter', sans-serif;
+  font-family: 'AbhayaLibre', serif;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -63,12 +64,20 @@ body {
 
 .luxury-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(217, 119, 6, 0.3);
+  box-shadow: 0 10px 25px rgba(216, 159, 48, 0.3);
 }
 
-/* Gold gradient background */
+/* Gold gradient background with new colors */
 .gold-gradient {
-  background: linear-gradient(135deg, #d97706 0%, #f59e0b 25%, #eab308 50%, #f59e0b 75%, #d97706 100%);
+  background: linear-gradient(135deg, #D89F30 0%, #734918 25%, #D89F30 50%, #734918 75%, #D89F30 100%);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'AbhayaLibre', serif;
+  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+  min-height: 100vh;
 }
 
 /* Marble texture effect */
@@ -103,8 +112,21 @@ body {
   }
 }
 
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
 .fade-in-up {
   animation: fadeInUp 0.8s ease-out;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }
 
 /* Custom scrollbar */
@@ -117,12 +139,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #d97706, #f59e0b);
+  background: linear-gradient(135deg, #D89F30, #734918);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #b45309, #d97706);
+  background: linear-gradient(135deg, #734918, #D89F30);
 }
 
 /* Responsive typography */
