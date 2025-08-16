@@ -1,263 +1,240 @@
-import React from 'react';
-import { ChevronLeft, ChevronRight, Menu, Search, Sparkles, Star } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Play, Pause, ChevronDown } from 'lucide-react';
 
-export default function Hero() {
+const Hero = () => {
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const toggleVideo = () => {
+    if (showVideo) {
+      setShowVideo(false);
+      setIsVideoPlaying(false);
+      if (videoRef.current) {
+        videoRef.current.pause();
+      }
+    } else {
+      setShowVideo(true);
+      setIsVideoPlaying(true);
+      if (videoRef.current) {
+        videoRef.current.play();
+      }
+    }
+  };
+
+  const handleVideoPlay = () => {
+    setIsVideoPlaying(true);
+  };
+
+  const handleVideoPause = () => {
+    setIsVideoPlaying(false);
+  };
+
   return (
-    <div className="w-full h-screen relative overflow-hidden">
-      {/* Split Background with Enhanced Gradients */}
-      <div className="absolute inset-0 flex">
-        {/* Left side - Vibrant Pink/Red */}
-        <div className="w-1/2 bg-gradient-to-br from-[#F74966] via-[#F74966] to-[#e03a5a] relative overflow-hidden">
-          {/* Animated background elements */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-20 left-20 w-32 h-32 bg-white rounded-full animate-pulse"></div>
-            <div className="absolute bottom-32 right-16 w-24 h-24 bg-white rounded-full animate-pulse delay-1000"></div>
-            <div className="absolute top-1/2 left-8 w-16 h-16 bg-white rounded-full animate-pulse delay-500"></div>
-          </div>
-        </div>
-        {/* Right side - Deep Dark Red */}
-        <div className="w-1/2 bg-gradient-to-br from-[#6D0F23] via-[#6D0F23] to-[#5a0a1d] relative overflow-hidden">
-          {/* Animated background elements */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-16 right-20 w-28 h-28 bg-white rounded-full animate-pulse delay-700"></div>
-            <div className="absolute bottom-20 left-12 w-20 h-20 bg-white rounded-full animate-pulse delay-300"></div>
-            <div className="absolute top-1/3 right-8 w-12 h-12 bg-white rounded-full animate-pulse delay-1200"></div>
-          </div>
-        </div>
-      </div>
-
-      {/* Enhanced center divider with glow effect */}
-      <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white to-transparent opacity-40 transform -translate-x-0.5">
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full shadow-lg animate-ping"></div>
-      </div>
-
-      {/* Premium Header with Enhanced Styling */}
-      <header className="relative z-20 flex items-center justify-between px-12 py-8">
-        <div className="flex items-center space-x-8">
-          <div className="group cursor-pointer">
-            <Menu className="w-6 h-6 text-white group-hover:text-pink-200 transition-all duration-300 transform group-hover:scale-110" />
-          </div>
-          <h1 className="text-2xl font-light tracking-[0.3em] text-white group cursor-pointer transition-all duration-500 hover:tracking-[0.4em]" 
-              style={{ fontFamily: 'Playfair Display, serif' }}>
-            <span className="inline-block transform hover:scale-105 transition-transform duration-300">FADED</span>
-            <span className="block text-pink-200 group-hover:text-white transition-colors duration-300">ELEGANCE</span>
-          </h1>
-        </div>
+    <div className="relative min-h-screen overflow-hidden bg-black">
+      {/* Animated Background Gradient */}
+      <div className="absolute inset-0">
+        <div 
+          className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-purple-900 opacity-90"
+          style={{
+            transform: `translateY(${scrollY * 0.5}px)`
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black opacity-60" />
         
-        <div className="flex items-center space-x-8">
-          <div className="flex items-center space-x-4 text-white group cursor-pointer">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#F74966] to-[#e03a5a] flex items-center justify-center text-white text-sm font-medium shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-110">
-              <Sparkles className="w-4 h-4" />
-            </div>
-            <span className="text-sm font-medium tracking-wider group-hover:text-pink-200 transition-colors duration-300" 
-                  style={{ fontFamily: 'Inter, sans-serif' }}>Services</span>
-          </div>
-          <div className="group cursor-pointer">
-            <Search className="w-6 h-6 text-white group-hover:text-pink-200 transition-all duration-300 transform group-hover:scale-110" />
-          </div>
-        </div>
-      </header>
-
-      {/* Enhanced Main Content with Premium Icons */}
-      <div className="absolute inset-0 flex">
-        
-        {/* Left Section - Premium Service Visual */}
-        <div className="w-1/2 relative flex items-center justify-center">
-          <div className="text-center space-y-8 animate-fade-in-left">
-            {/* Enhanced luxury icon container */}
-            <div className="group cursor-pointer">
-              <div className="w-40 h-40 mx-auto bg-white/10 rounded-full flex items-center justify-center backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all duration-500 transform hover:scale-110 hover:shadow-2xl relative overflow-hidden">
-                <div className="text-7xl group-hover:scale-110 transition-transform duration-500">👜</div>
-                {/* Glowing effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-              </div>
-              <div className="text-white text-lg tracking-[0.2em] font-medium mt-6 group-hover:text-pink-200 transition-colors duration-300" 
-                   style={{ fontFamily: 'Playfair Display, serif' }}>
-                PREMIUM BAGS
-              </div>
-              <div className="text-pink-200 text-sm tracking-wider opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0" 
-                   style={{ fontFamily: 'Inter, sans-serif' }}>
-                Expert Restoration
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Right Section - Premium Service Visual */}
-        <div className="w-1/2 relative flex items-center justify-center">
-          <div className="text-center space-y-8 animate-fade-in-right">
-            <div className="group cursor-pointer">
-              <div className="w-40 h-40 mx-auto bg-white/10 rounded-full flex items-center justify-center backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all duration-500 transform hover:scale-110 hover:shadow-2xl relative overflow-hidden">
-                <div className="text-7xl group-hover:scale-110 transition-transform duration-500">👠</div>
-                {/* Glowing effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-              </div>
-              <div className="text-white text-lg tracking-[0.2em] font-medium mt-6 group-hover:text-pink-200 transition-colors duration-300" 
-                   style={{ fontFamily: 'Playfair Display, serif' }}>
-                LUXURY SHOES
-              </div>
-              <div className="text-pink-200 text-sm tracking-wider opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0" 
-                   style={{ fontFamily: 'Inter, sans-serif' }}>
-                Master Craftsmanship
-              </div>
-            </div>
-          </div>
-          
-
+        {/* Animated Particles */}
+        <div className="absolute inset-0">
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-gold rounded-full opacity-30"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animation: `float ${3 + Math.random() * 4}s ease-in-out infinite`,
+                animationDelay: `${Math.random() * 2}s`
+              }}
+            />
+          ))}
         </div>
       </div>
 
-      {/* Enhanced Center Content with Premium Typography */}
-      <div className="absolute inset-0 flex items-center justify-center z-10">
-        <div className="text-center max-w-5xl px-8 transform translate-y-16">
-          {/* Enhanced main headline with staggered animation */}
-          <div className="overflow-hidden">
-            <h1 className="text-7xl md:text-8xl font-bold text-white tracking-[0.02em] leading-none mb-6 drop-shadow-2xl transform translate-y-full animate-slide-up" 
-                style={{ fontFamily: 'Playfair Display, serif' }}>
-              WHERE LUXURY
-            </h1>
-          </div>
-          <div className="overflow-hidden">
-            <h1 className="text-7xl md:text-8xl font-bold text-white tracking-[0.02em] leading-none mb-8 drop-shadow-2xl transform translate-y-full animate-slide-up-delayed" 
-                style={{ fontFamily: 'Playfair Display, serif' }}>
-              IS REBORN
-            </h1>
-          </div>
+      {/* Video Background */}
+      {showVideo && (
+        <div className="absolute inset-0 z-10">
+          <div className="absolute inset-0 bg-black bg-opacity-30 z-20" />
+          <video
+            ref={videoRef}
+            className="absolute inset-0 w-full h-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+            onPlay={handleVideoPlay}
+            onPause={handleVideoPause}
+          >
+            <source src="/6649895-uhd_4096_2160_25fps.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
           
-          {/* Enhanced subheadline */}
-          <div className="text-white text-lg md:text-xl tracking-[0.15em] font-light mb-10 drop-shadow-lg max-w-3xl mx-auto opacity-0 animate-fade-in-delayed" 
-               style={{ fontFamily: 'Inter, sans-serif' }}>
-            Premium Repair & Restoration for Your Most Loved Fashion Pieces
+          {/* Video Controls Overlay */}
+          <div className="absolute inset-0 z-30 flex items-center justify-center">
+            <div className="text-center animate-scale-in">
+              <div className="w-32 h-32 bg-black bg-opacity-50 rounded-full flex items-center justify-center mb-4 mx-auto backdrop-blur-sm border border-gold border-opacity-30 animate-glow-pulse">
+                {isVideoPlaying ? (
+                  <Pause className="w-12 h-12 text-gold" />
+                ) : (
+                  <Play className="w-12 h-12 text-gold ml-1" />
+                )}
+              </div>
+              <p className="text-lg font-light text-white font-inter">
+                {isVideoPlaying ? 'Video is playing' : 'Video is paused'}
+              </p>
+            </div>
           </div>
+        </div>
+      )}
 
-          {/* Enhanced description with typewriter effect */}
-          <div className="text-white/90 text-base leading-relaxed mb-10 max-w-3xl mx-auto drop-shadow-md opacity-0 animate-fade-in-more-delayed" 
-               style={{ fontFamily: 'Inter, sans-serif' }}>
-            Welcome to <span className="text-pink-200 font-medium">Faded Elegance</span>, where timeless luxury meets expert craftsmanship. We specialize in restoring, repairing, and customizing high-end shoes, bags, and leather goods for men, women, and kids. From color revival to customized artwork, every piece we touch regains its beauty, elegance, and charm.
-          </div>
+      {/* Navigation */}
+      <nav className="relative z-40 flex justify-between items-center px-8 py-6 animate-slide-in-top">
+        <div className="text-2xl font-bold text-gold tracking-wider font-playfair animate-scale-in">
+          FADED ELEGANCE
+        </div>
+        <div className="hidden md:flex space-x-8 text-white font-inter">
+          <a href="#services" className="hover:text-gold transition-colors duration-300 animate-fade-in-right animate-delay-200">Services</a>
+          <a href="#portfolio" className="hover:text-gold transition-all duration-300 animate-fade-in-right animate-delay-300">Portfolio</a>
+          <a href="#about" className="hover:text-gold transition-all duration-300 animate-fade-in-right animate-delay-400">About</a>
+          <a href="#contact" className="hover:text-gold transition-all duration-300 animate-fade-in-right animate-delay-500">Contact</a>
+        </div>
+      </nav>
 
-          {/* Enhanced call to action button */}
-          <button className="group bg-gradient-to-r from-[#F74966] to-[#6D0F23] hover:from-[#e03a5a] hover:to-[#5a0a1d] text-white px-10 py-3 rounded-full text-base tracking-widest font-medium transition-all duration-500 hover:scale-105 hover:shadow-2xl transform hover:-translate-y-1 border border-white/20 backdrop-blur-sm" 
-                  style={{ fontFamily: 'Inter, sans-serif' }}>
-            <span className="flex items-center space-x-3">
-              <span>DISCOVER SERVICES</span>
-              <Star className="w-4 h-4 group-hover:rotate-180 transition-transform duration-500" />
+      {/* Hero Content */}
+      <div className="relative z-30 flex flex-col items-center justify-center min-h-screen px-8 text-center">
+        <div 
+          className="max-w-6xl mx-auto"
+          style={{
+            transform: `translateY(${scrollY * 0.2}px)`
+          }}
+        >
+          {/* Main Headline */}
+          <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 leading-tight font-playfair animate-fade-in-up animate-delay-300">
+            <span className="block animate-fade-in-up animate-delay-400">Where Luxury is</span>
+            <span className="block text-gradient-luxury animate-fade-in-up animate-delay-500 animate-text-shimmer">
+              Reborn
             </span>
-          </button>
+          </h1>
+
+          {/* Subheadline */}
+          <p className="text-xl md:text-2xl text-gray-300 mb-8 font-light leading-relaxed max-w-4xl mx-auto font-inter animate-fade-in-up animate-delay-600">
+            Premium Repair & Restoration for Your Most Loved Fashion Pieces
+          </p>
+
+          {/* Description */}
+          <div className="max-w-4xl mx-auto mb-12 animate-fade-in-up animate-delay-700">
+            <p className="text-lg text-gray-400 leading-relaxed mb-6 font-inter">
+              Welcome to Faded Elegance, where timeless luxury meets expert craftsmanship. 
+              We specialize in restoring, repairing, and customizing high-end shoes, bags, 
+              and leather goods for men, women, and kids.
+            </p>
+            <p className="text-lg text-gray-400 leading-relaxed font-inter">
+              From color revival to customized artwork, every piece we touch regains its 
+              beauty, elegance, and charm.
+            </p>
+          </div>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 animate-fade-in-up animate-delay-800">
+            <button className="group relative px-8 py-4 bg-gradient-to-r from-gold to-yellow-300 text-black font-semibold rounded-none hover:shadow-2xl transition-all duration-300 transform hover:scale-105 animate-glow-pulse font-inter">
+              <span className="relative z-10">Start Your Restoration</span>
+              <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
+            </button>
+            
+            <button 
+              onClick={toggleVideo}
+              className="group flex items-center space-x-3 px-8 py-4 border-2 border-gold text-gold hover:bg-gold hover:text-black transition-all duration-300 font-inter"
+            >
+              {showVideo ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
+              <span>{showVideo ? 'Hide Video' : 'Watch Our Story'}</span>
+            </button>
+          </div>
+
+          {/* Stats */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-16">
+            <div className="text-center animate-scale-in animate-delay-600">
+              <div className="text-3xl md:text-4xl font-bold text-gradient-gold mb-2 font-playfair">10,000+</div>
+              <div className="text-gray-400 font-inter">Pieces Restored</div>
+            </div>
+            <div className="text-center animate-scale-in animate-delay-700">
+              <div className="text-3xl md:text-4xl font-bold text-gradient-gold mb-2 font-playfair">15+</div>
+              <div className="text-gray-400 font-inter">Years Experience</div>
+            </div>
+            <div className="text-center animate-scale-in animate-delay-800">
+              <div className="text-3xl md:text-4xl font-bold text-gradient-gold mb-2 font-playfair">99%</div>
+              <div className="text-gray-400 font-inter">Client Satisfaction</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-gold animate-bounce animate-float-enhanced">
+          <ChevronDown className="w-8 h-8" />
         </div>
       </div>
 
-      {/* Enhanced Navigation arrows */}
-      <button className="absolute left-8 top-1/2 transform -translate-y-1/2 z-20 group">
-        <div className="p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 group-hover:bg-white/20 transition-all duration-300">
-          <ChevronLeft className="w-8 h-8 text-white group-hover:text-pink-200 drop-shadow-lg group-hover:scale-110 transition-all duration-300" />
-        </div>
-      </button>
-      
-      <button className="absolute right-8 top-1/2 transform -translate-y-1/2 z-20 group">
-        <div className="p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 group-hover:bg-white/20 transition-all duration-300">
-          <ChevronRight className="w-8 h-8 text-white group-hover:text-pink-200 drop-shadow-lg group-hover:scale-110 transition-all duration-300" />
-        </div>
-      </button>
+      {/* Floating Elements */}
+      <div className="absolute top-1/4 left-10 w-2 h-20 bg-gradient-to-b from-gold to-transparent opacity-30 animate-float-enhanced" />
+      <div className="absolute bottom-1/4 right-10 w-2 h-20 bg-gradient-to-t from-gold to-transparent opacity-30 animate-float-enhanced" />
 
-      {/* Enhanced bottom navigation */}
-      <div className="absolute bottom-10 right-10 flex space-x-8 text-white z-20">
-        <button className="text-sm opacity-60 hover:opacity-100 transition-all duration-300 hover:text-pink-200 font-medium" 
-                style={{ fontFamily: 'Inter, sans-serif' }}>SHOES</button>
-        <button className="text-sm opacity-60 hover:opacity-100 transition-all duration-300 hover:text-pink-200 font-medium" 
-                style={{ fontFamily: 'Inter, sans-serif' }}>BAGS</button>
-        <button className="text-sm opacity-100 font-bold text-pink-200 transition-all duration-300" 
-                style={{ fontFamily: 'Inter, sans-serif' }}>LEATHER</button>
+      {/* Enhanced Animated Particles */}
+      <div className="absolute inset-0">
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-gold rounded-full opacity-30 animate-particle-float"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 2}s`,
+              animationDuration: `${3 + Math.random() * 4}s`
+            }}
+          />
+        ))}
       </div>
 
-      {/* Enhanced CSS animations */}
+      {/* Custom Styles */}
       <style jsx>{`
-        @keyframes fade-in-left {
-          from {
-            opacity: 0;
-            transform: translateX(-80px) scale(0.9);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0) scale(1);
-          }
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-20px); }
         }
         
-        @keyframes fade-in-right {
-          from {
-            opacity: 0;
-            transform: translateX(80px) scale(0.9);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0) scale(1);
-          }
-        }
-
-        @keyframes slide-up {
-          from {
-            transform: translateY(100%);
-          }
-          to {
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes slide-up-delayed {
-          from {
-            transform: translateY(100%);
-          }
-          to {
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes fade-in-delayed {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes fade-in-more-delayed {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+        .bg-gold { background-color: #D4AF37; }
+        .text-gold { color: #D4AF37; }
+        .border-gold { border-color: #D4AF37; }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+          width: 6px;
         }
         
-        .animate-fade-in-left {
-          animation: fade-in-left 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        ::-webkit-scrollbar-track {
+          background: #1a1a1a;
         }
         
-        .animate-fade-in-right {
-          animation: fade-in-right 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-        }
-
-        .animate-slide-up {
-          animation: slide-up 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-        }
-
-        .animate-slide-up-delayed {
-          animation: slide-up 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
-        }
-
-        .animate-fade-in-delayed {
-          animation: fade-in-delayed 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.2s forwards;
-        }
-
-        .animate-fade-in-more-delayed {
-          animation: fade-in-more-delayed 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.8s forwards;
+        ::-webkit-scrollbar-thumb {
+          background: #D4AF37;
+          border-radius: 3px;
         }
       `}</style>
     </div>
   );
-}
+};
+
+export default Hero;
