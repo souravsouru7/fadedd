@@ -19,17 +19,17 @@ export default function Hero() {
       {/* Content Overlay */}
       <div className="relative z-10 min-h-screen">
         {/* Header Navigation */}
-        <header className="flex items-center justify-between p-6 lg:p-8">
-                     {/* Logo */}
-           <div className="flex items-center">
-             <img 
-               src="/fenav.png" 
-               alt="Faded Elegance Logo" 
-               className="w-20 h-20 object-contain"
-             />
-           </div>
+        <header className="flex items-center justify-between p-4 lg:p-8">
+          {/* Logo */}
+          <div className="flex items-center">
+            <img 
+              src="/fenav.png" 
+              alt="Faded Elegance Logo" 
+              className="w-16 h-16 lg:w-20 lg:h-20 object-contain"
+            />
+          </div>
 
-          {/* Navigation Menu */}
+          {/* Navigation Menu - Hidden on mobile, shown on desktop */}
           <nav className="hidden lg:flex items-center space-x-12">
             <a href="#" className="luxury-nav text-[#D89F30] hover:text-white transition-colors duration-300 border-b-2 border-[#D89F30] pb-1 font-semibold text-lg tracking-wide">
               ABOUT
@@ -48,83 +48,90 @@ export default function Hero() {
             </a>
           </nav>
 
-          {/* Quick Call Button */}
-          <button className="luxury-button bg-gradient-to-r from-[#D89F30] to-[#734918] text-white px-6 py-3 rounded-full shadow-lg">
+          {/* Mobile Menu Button */}
+          <button className="lg:hidden text-[#D89F30] p-2">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+
+          {/* Quick Call Button - Hidden on mobile, shown on desktop */}
+          <button className="hidden lg:block luxury-button bg-gradient-to-r from-[#D89F30] to-[#734918] text-white px-6 py-3 rounded-full shadow-lg">
             📞 Quick Call
           </button>
         </header>
 
         {/* Main Content */}
-        <main className="flex items-center min-h-[80vh] px-6 lg:px-16">
+        <main className="flex flex-col lg:flex-row items-center min-h-[70vh] lg:min-h-[80vh] px-4 lg:px-16 pt-8 lg:pt-0">
           {/* Left Content */}
-          <div className="flex-1 max-w-2xl fade-in-up">
+          <div className="flex-1 max-w-2xl fade-in-up text-center lg:text-left mb-8 lg:mb-0">
             {/* Main Title */}
-            <div className="mb-8">
+            <div className="mb-6 lg:mb-8">
               <img 
                 src="/fetext.png" 
                 alt="Faded Elegance" 
-                className="w-full max-w-2xl h-auto object-contain"
+                className="w-full max-w-lg lg:max-w-2xl h-auto object-contain mx-auto lg:mx-0"
               />
             </div>
 
             {/* Subtitle */}
-            <p className="luxury-subtitle text-xl lg:text-2xl mb-12 text-white">
+            <p className="luxury-subtitle text-lg lg:text-2xl mb-8 lg:mb-12 text-white px-4 lg:px-0">
               WHERE LUXURY IS REBORN
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
-              <button className="luxury-button bg-gradient-to-r from-[#D89F30] to-[#734918] text-white px-10 py-4 rounded-full shadow-lg text-lg font-semibold">
+            <div className="flex flex-col sm:flex-row gap-4 lg:gap-6 justify-center lg:justify-start px-4 lg:px-0">
+              <button className="luxury-button bg-gradient-to-r from-[#D89F30] to-[#734918] text-white px-8 lg:px-10 py-3 lg:py-4 rounded-full shadow-lg text-base lg:text-lg font-semibold">
                 WHO WE ARE
               </button>
-              <button className="luxury-button border-2 border-white text-white px-10 py-4 rounded-full hover:bg-white hover:text-[#D89F30] transition-all duration-300 relative overflow-hidden group text-lg font-semibold">
+              <button className="luxury-button border-2 border-white text-white px-8 lg:px-10 py-3 lg:py-4 rounded-full hover:bg-white hover:text-[#D89F30] transition-all duration-300 relative overflow-hidden group text-base lg:text-lg font-semibold">
                 <span className="relative z-10">ENQUIRE NOW</span>
                 <div className="absolute inset-0 bg-white w-0 h-full transition-all duration-300 group-hover:w-full rounded-full"></div>
               </button>
             </div>
           </div>
 
-          {/* Right Image */}
+          {/* Right Image - Hidden on mobile, shown on desktop */}
           <div className="flex-1 hidden lg:block">
             <div className="relative fade-in-up flex justify-center items-center" style={{animationDelay: '0.3s'}}>
-                                            {/* Main image with impressive shape */}
-                <div className="relative w-[600px] h-[425px]">
-                  {/* Glowing border effect */}
-                  <div 
-                    className="absolute inset-0 pointer-events-none"
-                    style={{
-                      clipPath: 'polygon(15% 0%, 85% 0%, 100% 50%, 85% 100%, 15% 100%, 0% 50%)',
-                      background: 'linear-gradient(45deg, rgba(216, 159, 48, 0.8), rgba(115, 73, 24, 0.8))',
-                      transform: 'rotate(-2deg) scale(1.02)',
-                      filter: 'blur(8px)',
-                      zIndex: 1
-                    }}
-                  ></div>
-                  
-                  {/* Main image */}
-                  <img
-                    src="/mainimg.png"
-                    alt="Luxury leather craftsmanship showcase"
-                    className="absolute inset-0 w-full h-full object-cover"
-                    style={{
-                      clipPath: 'polygon(15% 0%, 85% 0%, 100% 50%, 85% 100%, 15% 100%, 0% 50%)',
-                      transform: 'rotate(-2deg)',
-                      zIndex: 2
-                    }}
-                  />
-                  
-                                     {/* Sharp border */}
-                   <div 
-                     className="absolute inset-0 pointer-events-none"
-                     style={{
-                       clipPath: 'polygon(15% 0%, 85% 0%, 100% 50%, 85% 100%, 15% 100%, 0% 50%)',
-                       background: 'transparent',
-                       transform: 'rotate(-2deg)',
-                       border: '3px solid #D89F30',
-                       zIndex: 3
-                     }}
-                   ></div>
-                </div>
+              {/* Main image with impressive shape */}
+              <div className="relative w-[600px] h-[425px]">
+                {/* Glowing border effect */}
+                <div 
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    clipPath: 'polygon(15% 0%, 85% 0%, 100% 50%, 85% 100%, 15% 100%, 0% 50%)',
+                    background: 'linear-gradient(45deg, rgba(216, 159, 48, 0.8), rgba(115, 73, 24, 0.8))',
+                    transform: 'rotate(-2deg) scale(1.02)',
+                    filter: 'blur(8px)',
+                    zIndex: 1
+                  }}
+                ></div>
+                
+                {/* Main image */}
+                <img
+                  src="/mainimg.png"
+                  alt="Luxury leather craftsmanship showcase"
+                  className="absolute inset-0 w-full h-full object-cover"
+                  style={{
+                    clipPath: 'polygon(15% 0%, 85% 0%, 100% 50%, 85% 100%, 15% 100%, 0% 50%)',
+                    transform: 'rotate(-2deg)',
+                    zIndex: 2
+                  }}
+                />
+                
+                {/* Sharp border */}
+                <div 
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    clipPath: 'polygon(15% 0%, 85% 0%, 100% 50%, 85% 100%, 15% 100%, 0% 50%)',
+                    background: 'transparent',
+                    transform: 'rotate(-2deg)',
+                    border: '3px solid #D89F30',
+                    zIndex: 3
+                  }}
+                ></div>
+              </div>
               
               {/* Premium badge overlay */}
               <div className="absolute top-8 right-8 bg-[#D89F30] text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg luxury-nav">

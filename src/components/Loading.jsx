@@ -8,7 +8,7 @@ export default function Loading() {
         <img 
           src="/fvlogo.png" 
           alt="Faded Elegance Logo" 
-          className="w-48 h-48 object-contain mb-6"
+          className="w-32 h-32 lg:w-48 lg:h-48 object-contain mb-6"
         />
         {/* Loading Text */}
        

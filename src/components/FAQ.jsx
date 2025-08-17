@@ -1,320 +1,164 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { Plus, Minus, Clock, Palette, Award, DollarSign, Crown } from 'lucide-react';
+import React, { useState } from 'react'
 
-const FAQ = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [openIndex, setOpenIndex] = useState(null);
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    // Add custom keyframes
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      @keyframes shimmer {
-        0% { transform: translateX(-100%); }
-        100% { transform: translateX(100%); }
-      }
-      @keyframes float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
-      }
-      .animate-float {
-        animation: float 3s ease-in-out infinite;
-      }
-      .animate-shimmer {
-        animation: shimmer 2s infinite;
-      }
-    `;
-    document.head.appendChild(style);
-
-    return () => {
-      observer.disconnect();
-      document.head.removeChild(style);
-    };
-  }, []);
+export default function FAQ() {
+  const [openIndex, setOpenIndex] = useState(null)
 
   const faqs = [
     {
-      icon: <Clock className="w-6 h-6" />,
-      question: 'How long does the repair or restoration take?',
-      answer: 'Depending on the service, it usually takes 3–7 working days. We\'ll confirm the exact time after assessment and provide regular updates throughout the process.'
+      question: "How long does the repair or restoration take?",
+      answer: "Depending on the service, it usually takes 3–7 working days. We'll confirm the exact time after assessment."
     },
     {
-      icon: <Palette className="w-6 h-6" />,
-      question: 'Can you restore all types of leather?',
-      answer: 'Yes, we work on most types of leather and similar materials, ensuring proper care for each. Our specialists are trained in handling exotic leathers and vintage materials.'
+      question: "Can you restore all types of leather?",
+      answer: "Yes, we work on most types of leather and similar materials, ensuring proper care for each."
     },
     {
-      icon: <Award className="w-6 h-6" />,
-      question: 'Do you offer custom designs?',
-      answer: 'Absolutely! From unique color patterns to personalized artwork, we can make your item truly one of a kind. Our design team works closely with you to bring your vision to life.'
+      question: "Do you offer custom designs?",
+      answer: "Absolutely! From unique color patterns to personalized artwork, we can make your item truly one of a kind."
     },
     {
-      icon: <DollarSign className="w-6 h-6" />,
-      question: 'How do I get a price estimate?',
-      answer: 'Simply send us photos of your item via WhatsApp or visit our store, and we\'ll provide a free comprehensive quote within 24 hours.'
+      question: "How do I get a price estimate?",
+      answer: "Simply send us photos of your item via WhatsApp or visit our store, and we'll provide a free quote."
     },
     {
-      icon: <Crown className="w-6 h-6" />,
-      question: 'Do you handle branded luxury items?',
-      answer: 'Yes, we specialize in premium brands and treat every piece with the highest level of care. Our craftsmen are experienced with luxury brands and maintain strict quality standards.'
+      question: "Do you handle branded luxury items?",
+      answer: "Yes, we specialize in premium brands and treat every piece with the highest level of care."
     }
-  ];
+  ]
 
   const toggleFAQ = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
+    setOpenIndex(openIndex === index ? null : index)
+  }
 
   return (
-    <div 
-      ref={sectionRef}
-      className="min-h-screen bg-black relative overflow-hidden pb-20 px-6"
-    >
-      {/* Split Background matching Hero with subtle animation */}
-      <div className="absolute inset-0 flex">
-        {/* Left side - Gray */}
-        <div className="w-1/2 bg-gradient-to-br from-gray-600 via-gray-700 to-gray-800 opacity-90 transition-all duration-1000 hover:opacity-95"></div>
-        {/* Right side - Teal/Blue */}
-        <div className="w-1/2 bg-gradient-to-br from-teal-500 via-teal-600 to-blue-600 opacity-90 transition-all duration-1000 hover:opacity-95"></div>
+    <section className="relative py-16 lg:py-24 overflow-hidden" style={{
+      background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2d2d2d 100%)'
+    }}>
+      {/* Background Decorative Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 left-20 w-48 h-48 bg-gradient-to-br from-[#D89F30]/8 to-[#734918]/4 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-20 w-40 h-40 bg-gradient-to-tl from-[#D89F30]/12 to-[#734918]/6 rounded-full blur-2xl"></div>
+        <div className="absolute top-1/2 left-1/3 w-32 h-32 bg-gradient-to-r from-[#D89F30]/6 to-[#734918]/3 rounded-full blur-xl"></div>
       </div>
 
-      {/* Vertical center border/divider with pulse animation */}
-      <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white opacity-20 transform -translate-x-0.5 animate-pulse"></div>
-
-      {/* Background Subtle Elements with floating animation */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }}></div>
-        <div className="absolute bottom-1/3 left-1/4 w-80 h-80 bg-white rounded-full blur-3xl animate-pulse" style={{ animationDuration: '6s', animationDelay: '2s' }}></div>
-      </div>
-
-      {/* Floating Elements with enhanced animations */}
-      <div className="absolute top-20 left-10 w-2 h-32 bg-gradient-to-b from-white/30 to-transparent animate-pulse" style={{ animationDuration: '3s' }}></div>
-      <div className="absolute bottom-32 right-16 w-2 h-24 bg-gradient-to-t from-white/30 to-transparent animate-pulse" style={{ animationDuration: '3s', animationDelay: '1.5s' }}></div>
-      
-      {/* New floating geometric elements */}
-      <div className="absolute top-1/3 left-1/4 w-4 h-4 bg-white/10 rounded-full animate-bounce" style={{ animationDuration: '2s', animationDelay: '0.5s' }}></div>
-      <div className="absolute top-2/3 right-1/3 w-3 h-3 bg-white/15 rounded-full animate-bounce" style={{ animationDuration: '3s', animationDelay: '1s' }}></div>
-      <div className="absolute bottom-1/4 left-1/3 w-2 h-2 bg-white/20 rounded-full animate-bounce" style={{ animationDuration: '2.5s', animationDelay: '2s' }}></div>
-
-      <div className="max-w-6xl mx-auto relative z-10">
-        
-        {/* Header Section */}
-        <div className="text-center mb-20 pt-20">
-          <div 
-            className="inline-block mb-8 group"
-            style={{
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(30px) scale(0.8)',
-              transition: 'all 0.8s ease 0.2s'
-            }}
-          >
-            <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mb-6 mx-auto shadow-lg border border-white/20 group-hover:scale-110 group-hover:bg-white/25 transition-all duration-500">
-              <span className="text-white text-3xl animate-pulse">?</span>
-            </div>
+      <div className="relative z-10 max-w-6xl mx-auto px-4 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center mb-12 lg:mb-20">
+          <div className="inline-block mb-6 lg:mb-8">
+            <span className="luxury-nav text-[#D89F30] text-sm tracking-widest uppercase">
+              Frequently Asked Questions
+            </span>
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-[#D89F30] to-transparent mt-2"></div>
           </div>
-
-          <h2 
-            className="text-5xl md:text-7xl font-normal text-white mb-4 tracking-[0.25em] uppercase hover:tracking-[0.3em] transition-all duration-700"
-            style={{
-              fontFamily: 'Playfair Display, serif',
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0) rotateX(0)' : 'translateY(30px) rotateX(-10deg)',
-              transition: 'all 0.8s ease 0.4s'
-            }}
-          >
-            Frequently Asked
+          
+          <h2 className="luxury-title text-4xl lg:text-7xl mb-6 lg:mb-8 leading-tight">
+            ANSWERS YOU NEED
           </h2>
           
-          <div 
-            className="text-6xl md:text-8xl font-bold text-white uppercase tracking-[0.05em] mb-6 drop-shadow-2xl hover:scale-105 transition-all duration-700"
-            style={{
-              fontFamily: 'Playfair Display, serif',
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0) rotateX(0)' : 'translateY(30px) rotateX(10deg)',
-              transition: 'all 0.8s ease 0.6s'
-            }}
-          >
-            Questions
-          </div>
-
-          <p 
-            className="text-white/80 text-lg md:text-xl font-light max-w-2xl mx-auto mb-8 leading-relaxed hover:text-white/90 transition-all duration-500"
-            style={{
-              fontFamily: 'Inter, sans-serif',
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(30px) scale(0.95)',
-              transition: 'all 0.8s ease 0.8s'
-            }}
-          >
+          <p className="luxury-subtitle text-lg lg:text-2xl text-white max-w-4xl mx-auto leading-relaxed font-light tracking-wide px-4 lg:px-0">
             Everything you need to know about our luxury restoration services
           </p>
-          
-          {/* Decorative Line with animation */}
-          <div 
-            className="w-32 h-px bg-white opacity-20 mx-auto relative overflow-hidden"
-            style={{
-              opacity: isVisible ? 1 : 0,
-              scaleX: isVisible ? 1 : 0,
-              transition: 'all 0.8s ease 1s'
-            }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent animate-pulse"></div>
-          </div>
         </div>
 
-        {/* FAQ List */}
-        <div className="space-y-6 mb-20">
+        {/* FAQ Items */}
+        <div className="space-y-4 lg:space-y-6">
           {faqs.map((faq, index) => (
             <div 
               key={index}
               className="group"
-              style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'translateY(0) translateX(0)' : `translateY(50px) translateX(${index % 2 === 0 ? '-30px' : '30px'})`,
-                transition: `all 0.8s ease ${1.2 + index * 0.1}s`
-              }}
             >
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl transition-all duration-500 overflow-hidden border border-white/20 hover:bg-white/15 hover:scale-[1.02] hover:shadow-2xl hover:shadow-white/10 group-hover:border-white/30">
-                <button
-                  onClick={() => toggleFAQ(index)}
-                  className="w-full p-8 text-left flex items-center justify-between hover:bg-white/5 transition-all duration-300 group"
-                >
-                  <div className="flex items-center gap-6">
-                    {/* Icon with unique animation */}
-                    <div className={`w-14 h-14 rounded-xl flex items-center justify-center transition-all duration-500 group-hover:rotate-12 ${
-                      openIndex === index 
-                        ? 'bg-white/30 shadow-lg scale-110 rotate-180' 
-                        : 'bg-white/15 hover:scale-105'
-                    }`}>
-                      <div className={`text-white transition-all duration-500 ${openIndex === index ? 'animate-pulse' : ''}`}>
-                        {faq.icon}
-                      </div>
-                    </div>
-
-                    {/* Question with letter spacing animation */}
-                    <h3 
-                      className="text-xl md:text-2xl font-normal text-white group-hover:text-white transition-all duration-500 uppercase tracking-[0.1em] group-hover:tracking-[0.15em]"
-                      style={{ fontFamily: 'Playfair Display, serif' }}
-                    >
-                      {faq.question}
-                    </h3>
-                  </div>
-
-                  {/* Toggle Icon with enhanced animation */}
-                  <div className={`w-10 h-10 flex items-center justify-center rounded-full transition-all duration-500 ${
+              <div 
+                className={`relative p-6 lg:p-8 rounded-2xl transition-all duration-500 cursor-pointer ${
+                  openIndex === index 
+                    ? 'bg-gradient-to-r from-[#D89F30]/15 to-[#734918]/8 border-[#D89F30]/30' 
+                    : 'bg-gradient-to-r from-[#D89F30]/5 to-[#734918]/2 border-[#D89F30]/10 hover:bg-gradient-to-r hover:from-[#D89F30]/10 hover:to-[#734918]/5'
+                }`}
+                style={{
+                  border: '1px solid',
+                  backdropFilter: 'blur(10px)',
+                  boxShadow: openIndex === index 
+                    ? '0 20px 40px rgba(216, 159, 48, 0.2)' 
+                    : '0 10px 30px rgba(0, 0, 0, 0.1)'
+                }}
+                onClick={() => toggleFAQ(index)}
+              >
+                {/* Question */}
+                <div className="flex items-center justify-between">
+                  <h3 className="luxury-nav text-[#D89F30] text-lg lg:text-2xl font-semibold tracking-wide pr-4 lg:pr-8">
+                    {faq.question}
+                  </h3>
+                  
+                  {/* Toggle Icon */}
+                  <div className={`flex-shrink-0 w-6 h-6 lg:w-8 lg:h-8 rounded-full flex items-center justify-center transition-all duration-500 ${
                     openIndex === index 
-                      ? 'bg-white/25 rotate-45 scale-110' 
-                      : 'bg-white/15 hover:bg-white/20 hover:scale-105 hover:rotate-90'
+                      ? 'bg-[#D89F30] rotate-180' 
+                      : 'bg-[#D89F30]/20 group-hover:bg-[#D89F30]/30'
                   }`}>
-                    <Plus className={`w-5 h-5 text-white transition-all duration-300 ${openIndex === index ? 'rotate-90' : ''}`} />
-                  </div>
-                </button>
-
-                {/* Answer with slide and fade animation */}
-                <div className={`overflow-hidden transition-all duration-700 ease-in-out ${
-                  openIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                }`}>
-                  <div className={`px-8 pb-8 transition-all duration-500 ${openIndex === index ? 'transform translate-y-0' : 'transform -translate-y-4'}`}>
-                    <div className="ml-20 pt-4">
-                      <p 
-                        className="text-white/80 text-lg leading-relaxed font-light"
-                        style={{ 
-                          fontFamily: 'Inter, sans-serif',
-                          animation: openIndex === index ? 'fadeInUp 0.6s ease-out 0.2s both' : ''
-                        }}
-                      >
-                        {faq.answer}
-                      </p>
-                    </div>
+                    <svg 
+                      className="w-4 h-4 lg:w-5 lg:h-5 text-white transition-transform duration-500" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
                   </div>
                 </div>
+
+                {/* Answer */}
+                <div className={`overflow-hidden transition-all duration-500 ${
+                  openIndex === index ? 'max-h-96 opacity-100 mt-4 lg:mt-6' : 'max-h-0 opacity-0'
+                }`}>
+                  <div className="pt-4 border-t border-[#D89F30]/20">
+                    <p className="luxury-subtitle text-gray-200 leading-relaxed text-base lg:text-xl font-light tracking-wide">
+                      {faq.answer}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Decorative Elements - Hidden on mobile, shown on desktop */}
+                <div className={`hidden lg:block absolute top-4 right-4 w-2 h-2 bg-[#D89F30] rounded-full transition-all duration-500 ${
+                  openIndex === index ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
+                }`}></div>
+                <div className={`hidden lg:block absolute bottom-4 left-4 w-1 h-1 bg-[#F4B942] rounded-full transition-all duration-500 ${
+                  openIndex === index ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
+                }`}></div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Contact CTA Section */}
-        <div 
-          className="text-center"
-          style={{
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-            transition: 'all 0.8s ease 2s'
-          }}
-        >
-          <div className="relative py-12 transition-all duration-500 overflow-hidden group">
-            {/* Animated Border with moving gradient */}
-            <div className="absolute inset-0 bg-gradient-to-r from-white/5 via-white/10 to-white/5 opacity-0 group-hover:opacity-100 transition-all duration-1000 rounded-3xl"></div>
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-pulse rounded-3xl"></div>
-            
-            {/* Sparkle Icon with floating animation */}
-            <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mb-6 mx-auto shadow-lg border border-white/20 group-hover:scale-110 group-hover:rotate-12 transition-all duration-700">
-              <span className="text-white text-2xl animate-bounce">✨</span>
-            </div>
-            
-            <h3 
-              className="text-3xl md:text-4xl font-normal text-white mb-4 uppercase tracking-[0.2em] group-hover:tracking-[0.25em] group-hover:scale-105 transition-all duration-700"
-              style={{ fontFamily: 'Playfair Display, serif' }}
-            >
-              Ready to restore your luxury item?
+        {/* Bottom CTA Section */}
+        <div className="text-center mt-12 lg:mt-20">
+          <div className="inline-block p-8 lg:p-10 rounded-3xl" style={{
+            background: 'linear-gradient(135deg, rgba(216, 159, 48, 0.1) 0%, rgba(115, 73, 24, 0.05) 100%)',
+            border: '2px solid rgba(216, 159, 48, 0.2)',
+            backdropFilter: 'blur(20px)',
+            boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)'
+          }}>
+            <h3 className="luxury-title text-2xl lg:text-4xl mb-4 lg:mb-6">
+              STILL HAVE QUESTIONS?
             </h3>
-            
-            <p 
-              className="text-white/80 text-lg md:text-xl font-light mb-8 max-w-2xl mx-auto leading-relaxed group-hover:text-white/90 transition-all duration-500"
-              style={{ fontFamily: 'Inter, sans-serif' }}
-            >
-              Contact us today for a free consultation and quote. Let's bring your cherished items back to life with our premium craftsmanship.
+            <p className="luxury-subtitle text-base lg:text-xl text-white mb-6 lg:mb-8 max-w-2xl mx-auto leading-relaxed font-light tracking-wide px-4 lg:px-0">
+              Our expert team is here to help. Contact us for personalized assistance.
             </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button 
-                className="group/btn relative px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-light uppercase tracking-[0.15em] rounded-full transition-all duration-500 hover:bg-white/25 hover:scale-110 hover:shadow-lg hover:shadow-white/20 border border-white/20 hover:border-white/40 overflow-hidden"
-                style={{ fontFamily: 'Inter, sans-serif' }}
-              >
-                <span className="relative z-10 group-hover/btn:tracking-[0.2em] transition-all duration-300">Get Started</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-1000"></div>
+            <div className="flex flex-col sm:flex-row gap-4 lg:gap-4 justify-center">
+              <button className="luxury-button bg-gradient-to-r from-[#D89F30] to-[#734918] text-white px-8 lg:px-10 py-3 lg:py-4 rounded-full text-base lg:text-lg font-semibold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                CONTACT US
               </button>
-              
-              <a 
-                href="tel:+971545770967" 
-                className="group/link flex items-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-light uppercase tracking-[0.15em] rounded-full transition-all duration-500 hover:border-white/40 hover:bg-white/15 hover:scale-110 hover:shadow-lg hover:shadow-white/20 overflow-hidden"
-                style={{ fontFamily: 'Inter, sans-serif' }}
-              >
-                <span className="group-hover/link:tracking-[0.2em] transition-all duration-300">Call Now</span>
-                <span className="text-white group-hover/link:text-white/90 group-hover/link:scale-110 transition-all duration-300">+971 54 5770967</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/5 to-white/0 translate-x-[-100%] group-hover/link:translate-x-[100%] transition-transform duration-1000"></div>
-              </a>
+              <button className="luxury-button border-2 border-[#D89F30] text-[#D89F30] px-8 lg:px-10 py-3 lg:py-4 rounded-full text-base lg:text-lg font-semibold hover:bg-[#D89F30] hover:text-white transition-all duration-300 hover:scale-105">
+                WHATSAPP US
+              </button>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  );
-};
 
-export default FAQ;
+      {/* Floating Elements */}
+      <div className="absolute top-32 left-16 w-2 h-2 lg:w-3 lg:h-3 bg-[#D89F30] rounded-full animate-pulse"></div>
+      <div className="absolute bottom-32 right-16 w-1 h-1 lg:w-2 lg:h-2 bg-[#F4B942] rounded-full animate-ping"></div>
+      <div className="absolute top-1/2 left-1/4 w-1 h-1 lg:w-1 lg:h-1 bg-[#734918] rounded-full animate-bounce"></div>
+      <div className="absolute bottom-1/2 right-1/4 w-1 h-1 lg:w-2 lg:h-2 bg-[#D89F30] rounded-full animate-pulse"></div>
+    </section>
+  )
+}

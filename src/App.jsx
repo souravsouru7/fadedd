@@ -3,6 +3,9 @@ import './App.css'
 import Hero from './components/Hero'
 import Loading from './components/Loading'
 import WhyChooseUs from './components/WhyChooseUs'
+import WorkProcess from './components/WorkProcess'
+import FAQ from './components/FAQ'
+import Footer from './components/Footer'
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
@@ -42,6 +45,9 @@ function App() {
       >
         <Hero />
         <WhyChooseUs />
+        <WorkProcess />
+        <FAQ />
+        <Footer />
       </div>
     </div>
   )
