@@ -20,14 +20,14 @@ export default function Hero() {
       <div className="relative z-10 min-h-screen">
         {/* Header Navigation */}
         <header className="flex items-center justify-between p-6 lg:p-8">
-          {/* Logo */}
-          <div className="flex items-center">
-            <img 
-              src="/fenav.png" 
-              alt="Faded Elegance Logo" 
-              className="w-12 h-12 object-contain"
-            />
-          </div>
+                     {/* Logo */}
+           <div className="flex items-center">
+             <img 
+               src="/fenav.png" 
+               alt="Faded Elegance Logo" 
+               className="w-20 h-20 object-contain"
+             />
+           </div>
 
           {/* Navigation Menu */}
           <nav className="hidden lg:flex items-center space-x-12">
@@ -87,12 +87,44 @@ export default function Hero() {
           {/* Right Image */}
           <div className="flex-1 hidden lg:block">
             <div className="relative fade-in-up flex justify-center items-center" style={{animationDelay: '0.3s'}}>
-              {/* Main image from online - medium size */}
-              <img
-                src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=700&h=525&fit=crop&crop=center"
-                alt="Luxury leather craftsmanship showcase"
-                className="w-[600px] h-[425px] object-cover rounded-2xl shadow-2xl"
-              />
+                                            {/* Main image with impressive shape */}
+                <div className="relative w-[600px] h-[425px]">
+                  {/* Glowing border effect */}
+                  <div 
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      clipPath: 'polygon(15% 0%, 85% 0%, 100% 50%, 85% 100%, 15% 100%, 0% 50%)',
+                      background: 'linear-gradient(45deg, rgba(216, 159, 48, 0.8), rgba(115, 73, 24, 0.8))',
+                      transform: 'rotate(-2deg) scale(1.02)',
+                      filter: 'blur(8px)',
+                      zIndex: 1
+                    }}
+                  ></div>
+                  
+                  {/* Main image */}
+                  <img
+                    src="/mainimg.png"
+                    alt="Luxury leather craftsmanship showcase"
+                    className="absolute inset-0 w-full h-full object-cover"
+                    style={{
+                      clipPath: 'polygon(15% 0%, 85% 0%, 100% 50%, 85% 100%, 15% 100%, 0% 50%)',
+                      transform: 'rotate(-2deg)',
+                      zIndex: 2
+                    }}
+                  />
+                  
+                                     {/* Sharp border */}
+                   <div 
+                     className="absolute inset-0 pointer-events-none"
+                     style={{
+                       clipPath: 'polygon(15% 0%, 85% 0%, 100% 50%, 85% 100%, 15% 100%, 0% 50%)',
+                       background: 'transparent',
+                       transform: 'rotate(-2deg)',
+                       border: '3px solid #D89F30',
+                       zIndex: 3
+                     }}
+                   ></div>
+                </div>
               
               {/* Premium badge overlay */}
               <div className="absolute top-8 right-8 bg-[#D89F30] text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg luxury-nav">
