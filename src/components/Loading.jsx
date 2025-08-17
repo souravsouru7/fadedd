@@ -6,7 +6,7 @@ export default function Loading() {
       <div className="text-center">
         {/* Logo */}
         <img 
-          src="/Faded Elegance Logo Final-07.png" 
+          src="/fvlogo.png" 
           alt="Faded Elegance Logo" 
           className="w-32 h-32 object-contain mb-6"
         />

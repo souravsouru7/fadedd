@@ -23,7 +23,7 @@ export default function Hero() {
           {/* Logo */}
           <div className="flex items-center">
             <img 
-              src="/Faded Elegance Logo Final-07.png" 
+              src="/fenav.png" 
               alt="Faded Elegance Logo" 
               className="w-12 h-12 object-contain"
             />
@@ -59,11 +59,13 @@ export default function Hero() {
           {/* Left Content */}
           <div className="flex-1 max-w-2xl fade-in-up">
             {/* Main Title */}
-            <h1 className="luxury-title text-6xl lg:text-8xl mb-8 leading-tight text-white">
-              FADED
-              <br />
-              ELEGANCE
-            </h1>
+            <div className="mb-8">
+              <img 
+                src="/fetext.png" 
+                alt="Faded Elegance" 
+                className="w-full max-w-2xl h-auto object-contain"
+              />
+            </div>
 
             {/* Subtitle */}
             <p className="luxury-subtitle text-xl lg:text-2xl mb-12 text-white">
@@ -93,7 +95,7 @@ export default function Hero() {
               />
               
               {/* Premium badge overlay */}
-              <div className="absolute top-8 right-8 bg-[#D89F30] text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+              <div className="absolute top-8 right-8 bg-[#D89F30] text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg luxury-nav">
                 PREMIUM
               </div>
               

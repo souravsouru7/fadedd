@@ -1,12 +1,9 @@
-/* Import AbhayaLibre SemiBold font */
-@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@600&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  font-family: 'AbhayaLibre', 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Abhaya Libre', 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 600;
 
@@ -28,7 +25,7 @@
 
 /* Custom luxury typography with AbhayaLibre */
 .luxury-title {
-  font-family: 'AbhayaLibre', serif;
+  font-family: 'Abhaya Libre', serif;
   font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -40,7 +37,7 @@
 }
 
 .luxury-subtitle {
-  font-family: 'AbhayaLibre', serif;
+  font-family: 'Abhaya Libre', serif;
   font-weight: 600;
   letter-spacing: 0.3em;
   text-transform: uppercase;
@@ -48,14 +45,14 @@
 }
 
 .luxury-nav {
-  font-family: 'AbhayaLibre', serif;
+  font-family: 'Abhaya Libre', serif;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .luxury-button {
-  font-family: 'AbhayaLibre', serif;
+  font-family: 'Abhaya Libre', serif;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -75,7 +72,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'AbhayaLibre', serif;
+  font-family: 'Abhaya Libre', serif;
   background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
   min-height: 100vh;
 }

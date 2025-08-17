@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './App.css'
 import Hero from './components/Hero'
 import Loading from './components/Loading'
+import WhyChooseUs from './components/WhyChooseUs'
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
@@ -40,6 +41,7 @@ function App() {
         }`}
       >
         <Hero />
+        <WhyChooseUs />
       </div>
     </div>
   )
