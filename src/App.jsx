@@ -12,21 +12,26 @@ function App() {
   const [isTransitioning, setIsTransitioning] = useState(false)
 
   useEffect(() => {
-    // Show loading for 3 seconds, then start transition
+    const hasVisited = sessionStorage.getItem('fe_has_visited')
+    if (hasVisited) {
+      setIsLoading(false)
+      return
+    }
+
     const timer = setTimeout(() => {
       setIsTransitioning(true)
-      // After transition animation completes, hide loading completely
       setTimeout(() => {
         setIsLoading(false)
-      }, 500) // 500ms for fade out animation
-    }, 3000)
+        sessionStorage.setItem('fe_has_visited', 'true')
+      }, 300) 
+    }, 1000)
 
     return () => clearTimeout(timer)
   }, [])
 
   return (
     <div className="relative">
-      {/* Loading Component with Fade Out */}
+
       {isLoading && (
         <div 
           className={`absolute inset-0 z-50 transition-opacity duration-500 ${
@@ -37,7 +42,7 @@ function App() {
         </div>
       )}
       
-      {/* Main Content with Fade In */}
+    
       <div 
         className={`transition-opacity duration-700 ${
           isLoading ? 'opacity-0' : 'opacity-100'

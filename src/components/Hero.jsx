@@ -1,4 +1,5 @@
 import React from 'react'
+import Navbar from './Navbar'
 
 export default function Hero() {
   return (
@@ -18,48 +19,7 @@ export default function Hero() {
       
       {/* Content Overlay */}
       <div className="relative z-10 min-h-screen">
-        {/* Header Navigation */}
-        <header className="flex items-center justify-between p-4 lg:p-8">
-          {/* Logo */}
-          <div className="flex items-center">
-            <img 
-              src="/fenav.png" 
-              alt="Faded Elegance Logo" 
-              className="w-16 h-16 lg:w-20 lg:h-20 object-contain"
-            />
-          </div>
-
-          {/* Navigation Menu - Hidden on mobile, shown on desktop */}
-          <nav className="hidden lg:flex items-center space-x-12">
-            <a href="#" className="luxury-nav text-[#D89F30] hover:text-white transition-colors duration-300 border-b-2 border-[#D89F30] pb-1 font-semibold text-lg tracking-wide">
-              ABOUT
-            </a>
-            <span className="text-[#D89F30] text-2xl font-bold">|</span>
-            <a href="#" className="luxury-nav text-[#D89F30] hover:text-white transition-colors duration-300 font-semibold text-lg tracking-wide">
-              SERVICES
-            </a>
-            <span className="text-[#D89F30] text-2xl font-bold">|</span>
-            <a href="#" className="luxury-nav text-[#D89F30] hover:text-white transition-colors duration-300 font-semibold text-lg tracking-wide">
-              GALLERY
-            </a>
-            <span className="text-[#D89F30] text-2xl font-bold">|</span>
-            <a href="#" className="luxury-nav text-[#D89F30] hover:text-white transition-colors duration-300 font-semibold text-lg tracking-wide">
-              CONTACT US
-            </a>
-          </nav>
-
-          {/* Mobile Menu Button */}
-          <button className="lg:hidden text-[#D89F30] p-2">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-
-          {/* Quick Call Button - Hidden on mobile, shown on desktop */}
-          <button className="hidden lg:block luxury-button bg-gradient-to-r from-[#D89F30] to-[#734918] text-white px-6 py-3 rounded-full shadow-lg">
-            📞 Quick Call
-          </button>
-        </header>
+        <Navbar />
 
         {/* Main Content */}
         <main className="flex flex-col lg:flex-row items-center min-h-[70vh] lg:min-h-[80vh] px-4 lg:px-16 pt-8 lg:pt-0">
