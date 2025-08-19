@@ -3,63 +3,34 @@ import { Link, NavLink } from 'react-router-dom'
 
 const servicesData = [
   {
-    title: 'Women’s Shoes',
+    title: 'Reborn',
     items: [
-      'Cleaning & Conditioning',
-      'Stitching',
-      'Color Restoration',
-      'Shoe Stretching',
-      'Heel & Sole Repair',
-      'Sole Guard & Heel Tips',
-      'Shoe Shine',
-      'Custom Coloring & Patterns',
-      'Customized Artwork'
+      'Handbag',
+      'Shoes',
+      'Wallet',
+      'Sandal'
     ]
   },
   {
-    title: 'Men’s Shoes',
+    title: 'Signature',
     items: [
-      'Cleaning & Conditioning',
-      'Stitching',
-      'Color Restoration',
-      'Shoe Stretching',
-      'Heel & Sole Repair',
-      'Sole Guard & Heel Tips',
-      'Shoe Shine',
-      'Custom Coloring & Patterns',
-      'Customized Artwork'
+      'Handbag',
+      'Shoes',
+      'Wallets'
     ]
   },
   {
-    title: 'Bags & Wallets',
+    title: 'Kids',
     items: [
-      'Cleaning & Conditioning',
-      'Color Restoration',
-      'Stitching & Edging',
-      'Zipper Repair & Replacement',
-      'Hardware Repair & Replacement',
-      'Custom Coloring & Patterns',
-      'Customized Artwork'
-    ]
-  },
-  {
-    title: 'Kids’ Shoes & Bags',
-    items: [
-      'Custom Coloring & Patterns',
-      'Customized Artwork'
-    ]
-  },
-  {
-    title: 'Sneakers',
-    items: [
-      'Cleaning',
-      'Color Restoration'
+      'Shoes',
+      'Bags'
     ]
   }
 ]
 
 export default function Navbar() {
   const [servicesOpen, setServicesOpen] = useState(false)
+  
   return (
     <header className="flex items-center justify-between p-4 lg:p-8">
       {/* Logo */}
@@ -133,9 +104,12 @@ export default function Navbar() {
           GALLERY
         </a>
         <span className="text-[#D89F30] text-2xl font-bold">|</span>
-        <a href="#" className="luxury-nav text-[#D89F30] hover:text-white transition-colors duration-300 font-semibold text-lg tracking-wide">
+        <NavLink
+          to="/contact"
+          className={({ isActive }) => `luxury-nav text-[#D89F30] hover:text-white transition-colors duration-300 pb-1 font-semibold text-lg tracking-wide ${isActive ? 'border-b-2 border-[#D89F30]' : 'border-b-2 border-transparent hover:border-[#D89F30]/60'}`}
+        >
           CONTACT US
-        </a>
+        </NavLink>
       </nav>
 
       {/* Mobile Menu Button */}
