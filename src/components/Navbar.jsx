@@ -4,26 +4,119 @@ import { Link, NavLink } from 'react-router-dom'
 const servicesData = [
   {
     title: 'Reborn',
-    items: [
-      'Handbag',
-      'Shoes',
-      'Wallet',
-      'Sandal'
+    tagline: 'Where your luxury items get a second life.',
+    subcategories: [
+      {
+        name: 'Handbag',
+        items: [
+          'Cleaning & Conditioning',
+          'Color Restoration',
+          'Stitching & Edging',
+          'Zipper Repair & Replacement',
+          'Hardware Repair & Replacement',
+          'Custom Coloring & Patterns',
+          'Customized Artwork'
+        ]
+      },
+      {
+        name: "Shoes (Women's & Men's)",
+        items: [
+          'Cleaning & Conditioning',
+          'Stitching',
+          'Color Restoration',
+          'Shoe Stretching',
+          'Heel Repair & Tips',
+          'Sole Repair & Sole Guard',
+          'Shoe Shine',
+          'Custom Coloring & Patterns',
+          'Customized Artwork'
+        ]
+      },
+      {
+        name: 'Wallet',
+        items: [
+          'Cleaning & Conditioning',
+          'Color Restoration',
+          'Stitching & Edging',
+          'Zipper Repair & Replacement',
+          'Hardware Repair & Replacement',
+          'Custom Coloring & Patterns',
+          'Customized Artwork'
+        ]
+      },
+      {
+        name: 'Sandals',
+        items: [
+          'Cleaning & Conditioning',
+          'Color Restoration',
+          'Stitching',
+          'Sole & Heel Repair',
+          'Custom Coloring & Patterns',
+          'Customized Artwork'
+        ]
+      }
     ]
   },
   {
     title: 'Signature',
-    items: [
-      'Handbag',
-      'Shoes',
-      'Wallets'
+    tagline: 'Personalized elegance, crafted for you.',
+    subcategories: [
+      {
+        name: 'Handbag',
+        items: [
+          'Custom Coloring & Patterns',
+          'Customized Artwork',
+          'Hardware & Zipper Upgrades',
+          'Fine Stitch Detailing'
+        ]
+      },
+      {
+        name: 'Shoes',
+        items: [
+          'Bespoke Coloring & Patterns',
+          'Premium Shoe Shine',
+          'Customized Artwork',
+          'Unique Sole & Heel Finishing'
+        ]
+      },
+      {
+        name: 'Wallet',
+        items: [
+          'Signature Coloring Styles',
+          'Personalized Artwork',
+          'Hardware Detailing',
+          'Premium Stitch Craft'
+        ]
+      },
+      {
+        name: 'Sandals',
+        items: [
+          'Unique Pattern Coloring',
+          'Artistic Customization',
+          'Sole Refinement',
+          'Elegant Stitch Work'
+        ]
+      }
     ]
   },
   {
     title: 'Kids',
-    items: [
-      'Shoes',
-      'Bags'
+    tagline: 'Special care for little ones’ favorites.',
+    subcategories: [
+      {
+        name: 'Shoes',
+        items: [
+          'Custom Coloring & Patterns',
+          'Customized Artwork'
+        ]
+      },
+      {
+        name: 'Bags',
+        items: [
+          'Creative Coloring & Patterns',
+          'Personalized Artwork'
+        ]
+      }
     ]
   }
 ]
@@ -75,24 +168,38 @@ export default function Navbar() {
           {/* Dropdown Panel */}
           <div className={`absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[min(90vw,1000px)] transition-opacity duration-200 ${servicesOpen ? 'visible opacity-100' : 'invisible opacity-0'}`}>
             <div className="rounded-3xl p-6 font-sans" style={{
-              background: 'linear-gradient(135deg, rgba(0,0,0,0.80), rgba(20,20,20,0.90))',
+              background: '#000',
               border: '1px solid rgba(216,159,48,0.25)',
               boxShadow: '0 20px 60px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.02)'
             }}>
-              <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-h-[70vh] overflow-y-auto pr-2">
                 {servicesData.map((cat) => (
                   <div key={cat.title} className="">
-                    <h4 className="luxury-nav text-[#D89F30] text-base lg:text-lg font-semibold mb-3 tracking-wide">
+                    <h4 className="luxury-nav text-[#D89F30] text-base lg:text-lg font-semibold tracking-wide">
                       {cat.title}
                     </h4>
-                    <ul className="space-y-1.5">
-                      {cat.items.map((item) => (
-                        <li key={item} className="flex items-start gap-2 text-white">
-                          <span className="mt-1 text-[#F4B942]">•</span>
-                          <span className="text-sm lg:text-base">{item}</span>
-                        </li>
+                    {cat.tagline ? (
+                      <p className="text-gray-300 text-xs lg:text-sm mb-3 mt-1">{cat.tagline}</p>
+                    ) : null}
+                    <div className="space-y-4">
+                      {cat.subcategories?.map((sub) => (
+                        <div key={sub.name}>
+                          <h5 className="text-white font-semibold text-sm lg:text-base mb-1">{sub.name}</h5>
+                          <ul className="space-y-1 pl-1">
+                            {sub.items.map((svc) => (
+                              <li key={svc}>
+                                <button type="button" className="w-full text-left flex items-start gap-2 text-white/90 hover:text-white hover:bg-white/10 rounded-md px-2 py-1 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#D89F30]/60">
+                                  <svg className="mt-1 w-3.5 h-3.5 text-[#F4B942] flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M12 2.75l2.955 6.001 6.62.962-4.788 4.668 1.13 6.594L12 17.98l-5.917 3.0 1.13-6.594L2.425 9.713l6.62-.962L12 2.75z"/>
+                                  </svg>
+                                  <span className="text-xs lg:text-sm">{svc}</span>
+                                </button>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
                       ))}
-                    </ul>
+                    </div>
                   </div>
                 ))}
               </div>

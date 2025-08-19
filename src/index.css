@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  font-family: 'Abhaya Libre', 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Playfair Display', 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 600;
 
@@ -45,7 +45,7 @@
 }
 
 .luxury-nav {
-  font-family: 'Abhaya Libre', serif;
+  font-family: 'Playfair Display', serif;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
