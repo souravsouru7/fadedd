@@ -8,11 +8,13 @@ import Services from './pages/Services.jsx'
 import Contact from './pages/Contact.jsx'
 import RouteLoader from './components/RouteLoader.jsx'
 import { AnimatePresence, motion as Motion } from 'framer-motion'
+import FloatingContact from './components/FloatingContact.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <RouteLoader>
+        <FloatingContact />
         <AnimatePresence mode="wait">
           <Routes>
             <Route
