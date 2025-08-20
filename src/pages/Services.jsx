@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 const servicesData = [
   {
@@ -132,6 +133,7 @@ export default function Services() {
           </div>
         </main>
       </div>
+      <Footer />
     </div>
   )
 }
